@@ -1,0 +1,39 @@
+open Core
+
+let file = "data_1.txt"
+
+let part_one nums =
+	let num =
+	 	List.find nums ~f:(fun x -> 
+			List.exists nums ~f:(fun y -> y = 2020 - x)
+		)
+	in
+	match num with
+	| Some y -> y*(2020-y)
+	| None -> 0
+;;
+
+let part_two nums =
+	let num =
+	 	List.find_map nums ~f:(fun x -> 
+			let y = List.find_map nums ~f:(fun z -> 
+				List.find nums ~f:(fun w -> w = 2020 - x - z)
+			)
+			in
+			match y with
+		 	| Some y -> Some (x*y*(2020-x-y))
+		 	| None -> None
+	 	)
+	in
+	match num with
+	| Some num -> num
+	| None -> 0
+;;
+
+let () = 
+	let nums = 
+		List.map (In_channel.read_lines file) ~f:int_of_string
+	in
+	printf "part 1: %d\n" (part_one nums);
+	printf "part 2: %d\n" (part_two nums)
+;;
