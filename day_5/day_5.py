@@ -16,7 +16,7 @@ def get_id(seat):
 	row = bin_to_dec(row_bin)
 	col = bin_to_dec(col_bin)
 
- 	return row * 8 + col
+	return row * 8 + col
 
 def bin_to_dec(b):
 	b = str(b)
@@ -31,8 +31,8 @@ def main():
 	with open('data_5.txt','r') as data:
 		seats = [ [line[:7], line[7:].strip()] 
   		for line in data.readlines()]
-  	print('part 1: {}'.format(part_one(seats)))
-  	print('part 2: {}'.format(part_two(seats)))
+		print('part 1: {}'.format(part_one(seats)))
+		print('part 2: {}'.format(part_two(seats)))
   	
 
 if __name__ == "__main__":

@@ -60,10 +60,3 @@ let () =
 	printf "part 1: %d\n" (part_one groups);
 	printf "part 2: %d\n" (part_two groups);
 ;;
-
-
-
-
-
-
-

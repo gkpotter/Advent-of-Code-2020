@@ -27,8 +27,8 @@ def main():
   	for raw_datum in raw_pw_data:
   		datum = {}
   		datum['range']= [int(x) for x in raw_datum[0].split('-')]
-  		datum['letter']=raw_datum[1].strip(':')
-  		datum['password']=raw_datum[2].strip('\n')
+  		datum['letter'] = raw_datum[1].strip(':')
+  		datum['password'] = raw_datum[2].strip('\n')
   		pw_data.append(datum)
 
   	print('part 1: {}'.format(part_one(pw_data)))
