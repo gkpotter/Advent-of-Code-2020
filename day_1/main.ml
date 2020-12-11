@@ -1,6 +1,6 @@
 open Core
 
-let file = "data_1.txt"
+let file = "input.txt"
 
 let part_one nums =
 	let num =

@@ -12,7 +12,7 @@ def part_two(nums):
 					return x*y*z
 	  			
 def main():
-  with open('data_1.txt','r') as data:
+  with open('input.txt','r') as data:
   	nums = [int(line) for line in data.readlines()]
   	
   	print('part 1: {}'.format(part_one(nums)))

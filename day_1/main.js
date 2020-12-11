@@ -3,7 +3,7 @@ const readline = require('readline');
 
 async function loadData() {
   const rl = readline.createInterface({
-    input: fs.createReadStream('data_1.txt')
+    input: fs.createReadStream('data.txt')
   });
 
   const data = [];
