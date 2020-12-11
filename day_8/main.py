@@ -59,7 +59,7 @@ def attempt(instructions):
 	return acc
 
 def main():
-  with open('data_8.txt','r') as data:
+  with open('input.txt','r') as data:
   	lines = data.readlines()
   	instructions = []
 

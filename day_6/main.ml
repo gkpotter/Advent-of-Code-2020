@@ -1,6 +1,6 @@
 open Core
 
-let file = "data_6.txt"
+let file = "input.txt"
 
 let unique_chars str =
 	let rec unique_chars2 l seen n =

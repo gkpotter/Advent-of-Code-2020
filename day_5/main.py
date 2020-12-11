@@ -28,7 +28,7 @@ def bin_to_dec(b):
 	return d
 	  			
 def main():
-	with open('data_5.txt','r') as data:
+	with open('input.txt','r') as data:
 		seats = [ [line[:7], line[7:].strip()] 
   		for line in data.readlines()]
 		print('part 1: {}'.format(part_one(seats)))

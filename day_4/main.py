@@ -79,7 +79,7 @@ def str_to_passport(s):
 	return passport
 
 def main():
-  with open('data_4.txt','r') as data:
+  with open('input.txt','r') as data:
   	passports = []
 
   	s = ''

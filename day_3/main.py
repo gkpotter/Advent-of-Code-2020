@@ -22,7 +22,7 @@ def check_trees(rows, right, down):
 	return total_trees
 	  			
 def main():
-  with open('data_3.txt','r') as data:
+  with open('input.txt','r') as data:
   	rows =  [line.strip() for line in data.readlines()]
   	
   	print('part 1: {}'.format(part_one(rows)))

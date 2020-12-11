@@ -16,7 +16,7 @@ def part_two(groups):
   return total
 
 def main():
-  with open('data_6.txt','r') as data:
+  with open('input.txt','r') as data:
   	groups = []
 
   	group = []

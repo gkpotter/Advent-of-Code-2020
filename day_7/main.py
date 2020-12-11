@@ -32,7 +32,7 @@ def count(bag, rules):
 		return sum(rules[bag][other]*(1+count(other,rules)) for other in others)
 		
 def main():
-  with open('data_7.txt','r') as data:
+  with open('input.txt','r') as data:
   	lines = data.readlines()
   	rules = {}
 

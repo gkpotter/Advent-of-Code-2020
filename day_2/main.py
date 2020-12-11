@@ -20,7 +20,7 @@ def part_two(pw_data):
 	return total_valid
 	  			
 def main():
-  with open('data_2.txt','r') as data:
+  with open('input.txt','r') as data:
   	raw_pw_data = [line.split(' ') for line in data.readlines()]
   	pw_data = []
   	

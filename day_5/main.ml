@@ -1,6 +1,6 @@
 open Core
 
-let file = "data_5.txt"
+let file = "input.txt"
 
 let dec_to_bin str =
 	let l = String.length str in

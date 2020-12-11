@@ -29,7 +29,7 @@ def part_two(nums, N):
 
 
 def main():
-  with open('data_9.txt','r') as data:
+  with open('input.txt','r') as data:
   	nums = [int(line) for line in data.readlines()]
   	
   	print('part 1: {}'.format(N := part_one(nums)))
