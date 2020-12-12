@@ -1,15 +1,87 @@
-def part_one(nums):
-	return
+compass = {
+	'N' : [0,1],
+	'E' : [1,0],
+	'S' : [0,-1],
+	'W' : [-1,0]
+}
 
-def part_two(adapters):
-	return
+
+def add(u, v):
+	return [u[i]+v[i] for i in range(len(u))]
+
+
+def mult(k, u):
+	return [k*u[i] for i in range(len(u))]
+
+
+def rotate_left(u, deg):
+	x, y = u
+	while deg < 0:
+		deg += 360
+
+	if deg == 90:
+		return [-y,x]
+	elif deg == 180:
+		return [-x,-y]
+	elif deg == 270:
+		return [y, -x]
+	else:
+		return [x, y]
+
+
+def part_one(instructions):
+	direction = [1,0]
+	pos = [0,0]
+
+	for i in range(len(instructions)):
+		letter, num = instructions[i]
+
+		if letter in compass:
+			pos = add(pos, mult(num, compass[letter]))
+		elif letter == 'F':
+			pos = add(pos, mult(num, direction))
+		else:
+			deg = num
+
+			if letter == 'R':
+				deg *= -1
+
+			direction = rotate_left(direction, deg)
+
+	return sum(abs(x) for x in pos) 
+
+
+def part_two(instructions):
+	pos = [0,0]
+	waypoint = [10,1]
+
+	for i in range(len(instructions)):
+		letter, num = instructions[i]
+
+		if letter in compass:
+			waypoint = add(waypoint, mult(num, compass[letter]))
+		elif letter == 'F':
+			pos = add(pos, mult(num, waypoint))
+		else:
+			deg = num
+
+			if letter == 'R':
+				deg *= -1
+
+			waypoint = rotate_left(waypoint, deg)
+
+	return sum(abs(x) for x in pos)
+
 
 def main():
   with open('input.txt','r') as data:
-  	nums = [int(line) for line in data.readlines()]
+  	instructions = [[line[0],int(line[1:])] for line in data.readlines()]
   	
-  	print('part 1: {}'.format(part_one(nums)))
-  	print('part 2: {}'.format(part_two(nums)))
+  	print(instructions)
+
+  	print('part 1: {}'.format(part_one(instructions)))
+  	print('part 2: {}'.format(part_two(instructions)))
+
 
 if __name__ == "__main__":
     main()

@@ -31,8 +31,8 @@ def in_grid(spot, rows, cols):
 	return i >= 0 and j >= 0 and i < rows and j < cols
 
 
-def add_2d(u, v):
-	return [u[0] + v[0], u[1] + v[1]]
+def add(u, v):
+	return [u[i]+v[i] for i in range(len(u))]
 
 
 def get_occupied(spot, rows, cols, grid, search_visible = False):
@@ -50,7 +50,7 @@ def get_occupied(spot, rows, cols, grid, search_visible = False):
 	]
 
 	for direction in directions:
-		neighbor = add_2d(spot,direction)
+		neighbor = add(spot,direction)
 
 		if not search_visible:
 			if in_grid(neighbor,rows,cols):
@@ -64,20 +64,20 @@ def get_occupied(spot, rows, cols, grid, search_visible = False):
 						occupied += (grid[neighbor[0]][neighbor[1]] == '#')
 						searching = False
 					else:
-						neighbor = add_2d(neighbor,direction)
+						neighbor = add(neighbor,direction)
 				else:
 					searching = False
 		
 	return occupied
 
 
-def final_occupied(grid, occupied_threshold, search_visible = False):
+def part_one(grid):
 	rows = len(grid)
 	cols = len(grid[0])
 	
 	changed = True
 	while changed:
-		grid, changed = update_grid(grid, rows, cols, occupied_threshold, search_visible)
+		grid, changed = update_grid(grid, rows, cols, 4, False)
 
 	occupied = 0
 
@@ -88,12 +88,21 @@ def final_occupied(grid, occupied_threshold, search_visible = False):
 	return occupied
 
 
-def part_one(grid):
-	return final_occupied(grid, 4)
-
-
 def part_two(grid):
-	return final_occupied(grid, 5, True)
+	rows = len(grid)
+	cols = len(grid[0])
+	
+	changed = True
+	while changed:
+		grid, changed = update_grid(grid, rows, cols, 5, True)
+
+	occupied = 0
+
+	for i in range(rows):
+		for j in range(cols):
+			occupied += (grid[i][j] == '#')
+
+	return occupied
 
 
 def main():
