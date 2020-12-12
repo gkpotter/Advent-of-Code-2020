@@ -11,8 +11,7 @@ def part_one(adapters):
 			threes+=1
 	
 	return ones*threes
-
-
+	
 
 def part_two(adapters):
 	total = 1
