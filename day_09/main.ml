@@ -22,32 +22,34 @@ let part_one nums =
 ;;
 
 let part_two nums n =
-	let rec search start stop summands total =
+	let rec search remainder summands total =
 	if total < n then
-		match stop with
+		match remainder with
 		| hd :: tl -> 
 			search 
-				start 
 				tl 
-				(Fdeque.enqueue_back summands hd) 
+				(Fdeque.enqueue summands `back hd) 
 				(total + hd)
 		| [] -> []
 	else if total > n then 
-		match start with
-		| hd :: tl -> 
-			search 
-				tl 
-				stop 
-				(Fdeque.drop_front_exn summands) 
+		match (Fdeque.dequeue summands `front) with
+		| Some (hd, tl) -> 
+			search
+				remainder 
+				tl
 				(total - hd)
-		| [] -> []
+		| None -> []
 	else
-		summands
+		Fdeque.to_list summands
 	in
-	let summands = Fdeque.to_list (search nums nums Fdeque.empty 0) in
+	let summands =  (search nums Fdeque.empty 0) in
 	let compare = (-) in
-	Option.value_exn(List.max_elt summands ~compare) 
-		+ Option.value_exn(List.min_elt summands ~compare)  
+	match (
+		List.max_elt summands ~compare, 
+		List.min_elt summands ~compare) 
+	with
+		| (Some max, Some min) -> max + min
+		| _ -> 0
 ;;
 
 let () = 
