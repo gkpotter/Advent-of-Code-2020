@@ -68,6 +68,7 @@ def solve(board, pieces, n, row, col):
 	else:
 		return True
 
+
 def check(board, row, col):
 	if row > 0:
 		if board[row][col].top() != board[row-1][col].bot():
@@ -78,22 +79,100 @@ def check(board, row, col):
 	return True
 
 
+def get_image(board):
+	img = []
+	line = []
+	n = len(board)
+	d = board[0][0].d
+	i = 0
+
+	while i < n*d:
+		if i%d not in [0,d-1]:	
+			for piece in board[i//d]:
+				line.extend(piece.grid[i%d][1:-1])
+
+			img.append(''.join(line))
+			line = []
+
+		i+=1
+
+	return img
+
+def flipped(grid):
+	return [list(reversed(row)) for row in grid]
+
+
+def rotated(grid):
+	return [list(row) for row in zip(*reversed(grid))]
+
+
+def get_orientations(grid):
+	grids = []
+
+	grids.append(grid)
+
+	for i in range(3):
+		grids.append(rotated(grids[-1]))
+	
+	grids.append(flipped(grids[0]))
+
+	for i in range(3):
+		grids.append(rotated(grids[-1]))
+
+	return grids
+
+
 def part_one(pieces):
 	n = int(math.sqrt(len(pieces)))
 	board = [[0 for i in range(n)] for j in range(n)]
 
 	solve(board, pieces, n, 0, 0)
 
-	for row in board:
-		print(row)
+	return (board,
+					int(board[0][0].num)
+					* int(board[n-1][0].num)
+					* int(board[0][n-1].num)
+					* int(board[n-1][n-1].num))
 
-	return (int(board[0][0].num)
-				* int(board[n-1][0].num)
-				* int(board[0][n-1].num)
-				* int(board[n-1][n-1].num))
 
-def part_two():
-	return
+def part_two(board):
+	img = [list(line) for line in get_image(board)]
+
+	monsters = get_orientations(['                  # ',
+						 									 '#    ##    ##    ###',
+						 								   ' #  #  #  #  #  #   '])
+
+	for monster in monsters:
+		h = len(monster)
+		w = len(monster[0])
+		
+		for x in range(len(img)-w):
+			for y in range(len(img)-h):
+				
+				found = True
+				
+				for i in range(w):
+					if not found:
+						break
+					for j in range(h):
+						if monster[j][i] not in [' ', img[y+j][x+i]]:
+							if img[y+j][x+i] != 'O':
+								found = False
+				
+				# mark monster
+				if found:
+					for i in range(w):
+						for j in range(h):
+							if monster[j][i] != ' ':
+								img[y+j][x+i] = 'O'
+
+	count = 0
+	for line in img:
+		for x in line:
+			if x == '#':
+				count += 1
+
+	return count
 
 
 def main():
@@ -123,8 +202,10 @@ def main():
   	
   	pieces.append(Piece(num, grid))
 
-  	print('part 1: {}'.format(part_one(pieces)))
-  	print('part 2: {}'.format(part_two()))
+  	board, part_one_ans = part_one(pieces)
+
+  	print('part 1: {}'.format(part_one_ans))
+  	print('part 2: {}'.format(part_two(board)))
 
 
 
