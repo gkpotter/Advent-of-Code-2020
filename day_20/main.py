@@ -128,11 +128,11 @@ def part_one(pieces):
 
 	solve(board, pieces, n, 0, 0)
 
-	return (board,
-					int(board[0][0].num)
+	return (int(board[0][0].num)
 					* int(board[n-1][0].num)
 					* int(board[0][n-1].num)
-					* int(board[n-1][n-1].num))
+					* int(board[n-1][n-1].num),
+					board)
 
 
 def part_two(board):
@@ -202,7 +202,7 @@ def main():
   	
   	pieces.append(Piece(num, grid))
 
-  	board, part_one_ans = part_one(pieces)
+  	part_one_ans, board = part_one(pieces)
 
   	print('part 1: {}'.format(part_one_ans))
   	print('part 2: {}'.format(part_two(board)))
