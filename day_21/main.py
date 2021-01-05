@@ -1,3 +1,6 @@
+import time
+import os
+
 def part_one(ingredient_lists, allergen_lists):
 	all_allergens = set.union(*[set(a) for a in allergen_lists])
 	
@@ -48,7 +51,9 @@ def part_two(bad_foods):
 
 
 def main():
-	with open('input.txt','r') as data:
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
 		lines = [line.strip(')\n') for line in data.readlines()]
 		
 		ingredient_lists = []
@@ -63,8 +68,11 @@ def main():
 			allergen_lists.append(a)
 
 		part_one_ans, bad_foods = part_one(ingredient_lists, allergen_lists)
-		print('part 1: {}'.format(part_one_ans))
-		print('part 2: {}'.format(part_two(bad_foods)))
+		part_two_ans = part_two(bad_foods)
+
+		print('day 21  ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 
 

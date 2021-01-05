@@ -1,3 +1,6 @@
+import time
+import os
+
 def part_one(nums):
 	i = 25
 	
@@ -29,11 +32,17 @@ def part_two(nums, N):
 
 
 def main():
-  with open('input.txt','r') as data:
-  	nums = [int(line) for line in data.readlines()]
-  	
-  	print('part 1: {}'.format(N := part_one(nums)))
-  	print('part 2: {}'.format(part_two(nums, N)))
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		nums = [int(line) for line in data.readlines()]
+		
+		part_one_ans = part_one(nums)
+		part_two_ans = part_two(nums, part_one_ans)
+
+		print('day  9 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 if __name__ == "__main__":
-    main()
+		main()

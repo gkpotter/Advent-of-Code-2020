@@ -1,12 +1,17 @@
+import time
+import os
+
 def part_one(rows):
 	return check_trees(rows, 3, 1)
-  			
+	
+
 def part_two(rows):
 	slopes = [[1,1],[3,1],[5,1],[7,1],[1,2]]
 	prod = 1
 	for slope in slopes:
 		prod *= check_trees(rows,*slope)
 	return prod
+
 
 def check_trees(rows, right, down):
 	total_trees = 0
@@ -20,14 +25,21 @@ def check_trees(rows, right, down):
 		y += down
 	
 	return total_trees
-	  			
+	
+					
 def main():
-  with open('input.txt','r') as data:
-  	rows =  [line.strip() for line in data.readlines()]
-  	
-  	print('part 1: {}'.format(part_one(rows)))
-  	print('part 2: {}'.format(part_two(rows)))
-  	
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		rows =  [line.strip() for line in data.readlines()]
+		
+		part_one_ans = part_one(rows)
+		part_two_ans = part_two(rows)
+
+		print('day  3 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
+		
 
 if __name__ == "__main__":
-    main()
+		main()

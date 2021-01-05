@@ -1,4 +1,7 @@
 import re
+import time
+import os
+
 
 def eval_plus_first(expression):
 	while '(' in expression:
@@ -28,6 +31,7 @@ def eval_left_to_right(expression):
 
 	return int(expression)
 
+
 def eval_operation(match):
 	x = int(match.group(1))
 	y = int(match.group(3))
@@ -39,6 +43,7 @@ def eval_operation(match):
 		return str(x*y)
 	else:
 		return '0'
+
 
 def part_one(expressions):
 	total = 0
@@ -55,11 +60,18 @@ def part_two(expressions):
 
 
 def main():
-	with open('input.txt','r') as data:
+	start_time = time.time()
+	
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
 		expressions = [line.strip() for line in data.readlines()]
 
-		print('part 1: {}'.format(part_one(expressions)))
-		print('part 2: {}'.format(part_two(expressions)))
+		part_one_ans = part_one(expressions)
+		part_two_ans = part_two(expressions)
+
+		print('day 18 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
+
 
 if __name__ == "__main__":
-    main()
+		main()

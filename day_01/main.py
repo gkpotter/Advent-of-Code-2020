@@ -1,10 +1,13 @@
+import time
+import os
+
 def part_one(nums):
 	for x in nums:
 		for y in nums:
 			if x+y == 2020:
 				return x*y
 
-  			
+				
 def part_two(nums):
 	for x in nums:
 		for y in nums:
@@ -12,14 +15,20 @@ def part_two(nums):
 				if x+y+z == 2020:
 					return x*y*z
 
-	  			
+					
 def main():
-  with open('input.txt', 'r') as data:
-  	nums = [int(line) for line in data.readlines()]
-  	
-  	print('part 1: {}'.format(part_one(nums)))
-  	print('part 2: {}'.format(part_two(nums)))
-  	
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		nums = [int(line) for line in data.readlines()]
+		
+		part_one_ans = part_one(nums)
+		part_two_ans = part_two(nums)
+
+		print('day  1 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
+		
 
 if __name__ == "__main__":
-    main()
+		main()

@@ -1,3 +1,7 @@
+import time
+import os
+
+
 def bitmask(value, mask):
 	b = str(bin(value))[2:].zfill(len(mask))
 	masked_b = [b[i] if mask[i]=='X' else mask[i] for i in range(len(mask))]
@@ -11,6 +15,7 @@ def floating_bitmask(value, mask):
 	floating_b = ''.join(masked_b)
 	
 	return resolve_floating(floating_b,[])
+
 
 def resolve_floating(floating_b, b_list):
 	branched = False
@@ -28,6 +33,7 @@ def resolve_floating(floating_b, b_list):
 		b_list.append(int(floating_b,2))
 	
 	return b_list
+
 
 def part_one(instructions):
 	mem = {}
@@ -67,12 +73,18 @@ def part_two(instructions):
 
 
 def main():
-  with open('input.txt','r') as data:
-  	instructions = [line.strip().split(' = ') for line in data.readlines()]
+	start_time = time.time()
 
-  	print('part 1: {}'.format(part_one(instructions)))
-  	print('part 2: {}'.format(part_two(instructions)))
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		instructions = [line.strip().split(' = ') for line in data.readlines()]
+
+		part_one_ans = part_one(instructions)
+		part_two_ans = part_two(instructions)
+
+		print('day 14 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 
 if __name__ == "__main__":
-    main()
+		main()

@@ -1,3 +1,7 @@
+import time
+import os
+
+
 def update_grid(grid, rows, cols, occupied_threshold, search_visible=False):
 	changed = True
 
@@ -106,11 +110,18 @@ def part_two(grid):
 
 
 def main():
-  with open('input.txt','r') as data:
-  	grid = [list(line.strip()) for line in data.readlines()]
-  	
-  	print('part 1: {}'.format(part_one(grid)))
-  	print('part 2: {}'.format(part_two(grid)))
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		grid = [list(line.strip()) for line in data.readlines()]
+		
+		part_one_ans = part_one(grid)
+		part_two_ans = part_two(grid)
+
+		print('day 11 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
+
 
 if __name__ == "__main__":
-    main()
+		main()

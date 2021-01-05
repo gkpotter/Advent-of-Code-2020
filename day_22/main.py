@@ -1,3 +1,7 @@
+import time
+import os
+
+
 def score_deck(d):
 	score = 0
 	l = len(d)
@@ -5,6 +9,7 @@ def score_deck(d):
 		score += (l-i)*d[i]
 
 	return score
+
 
 def part_one(d1, d2):
 	while len(d1)!=0 and len(d2)!=0:
@@ -50,6 +55,7 @@ def recursive_combat(d1, d2, previous_states):
 	else:
 		return (2, d2)
 
+
 def part_two(d1, d2):
 	_, d = recursive_combat(d1,d2,[])
 
@@ -57,7 +63,9 @@ def part_two(d1, d2):
 
 
 def main():
-	with open('input.txt','r') as data:
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
 		lines = [line.strip(')\n') for line in data.readlines()]
 
 		i = lines.index('Player 2:')
@@ -65,8 +73,12 @@ def main():
 		d1 = [int(x) for x in lines[1 : i-1]]
 		d2 = [int(x) for x in lines[i+1 : ]]
 
-		print('part 1: {}'.format(part_one(d1.copy(), d2.copy())))
-		print('part 2: {}'.format(part_two(d1.copy(), d2.copy())))
+		part_one_ans = part_one(d1.copy(),d2.copy())
+		part_two_ans = part_two(d1.copy(),d2.copy())
+
+		print('day 22  ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 
 if __name__ == "__main__":

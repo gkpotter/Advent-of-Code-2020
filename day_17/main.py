@@ -1,3 +1,6 @@
+import time
+import os
+
 directions_4d = []
 directions_3d = []
 offsets = [-1,0,1]
@@ -41,6 +44,7 @@ def update_grid(grid, four_dim):
 					
 	return new_grid
 
+
 def empty_grid(d, h,l,w):
 	return [[[[0 for y in range(w)] 
 		for x in range(l)] 
@@ -57,6 +61,7 @@ def in_grid(grid, pos):
 		and (x >= 0 and x < l) 
 		and (y >= 0 and y < w))
 
+
 def get_neighbors(grid, pos, four_dim):
 	neighbors = 0
 
@@ -71,8 +76,10 @@ def get_neighbors(grid, pos, four_dim):
 
 	return neighbors
 
+
 def add(u,v):
 	return [u[i]+v[i] for i in range(len(u))]
+
 
 def grid_size(grid):
 	d = len(grid)
@@ -82,6 +89,7 @@ def grid_size(grid):
 
 	return (d, h, l, w)
 
+
 def print_grid(grid):
 	d, h, l, w = grid_size(grid)
 	for t in range(d):
@@ -89,6 +97,7 @@ def print_grid(grid):
 			print('z = {}, t = {}'.format(z-h//2, t-d//2))
 			for x in range(l):
 				print(''.join(['#' if point == 1 else '.' for point in grid[t][z][x]]))
+
 
 def count_active(grid):
 	count = 0
@@ -117,7 +126,9 @@ def part_two(grid):
 
 
 def main():
-	with open('input.txt','r') as data:
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
 		lines = [line.strip() for line in data.readlines()]
 		grid = []
 		initial_layer = []
@@ -127,8 +138,13 @@ def main():
 
 		grid.append([initial_layer])
 
-		print('part 1: {}'.format(part_one(grid)))
-		print('part 2: {}'.format(part_two(grid)))
+		part_one_ans = part_one(grid)
+		part_two_ans = part_two(grid)
+
+		print('day 17 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
+
 
 if __name__ == "__main__":
-    main()
+		main()

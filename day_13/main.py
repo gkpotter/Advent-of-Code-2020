@@ -1,3 +1,7 @@
+import time
+import os
+
+
 def part_one(start, bus_ids):
 	time = start-1
 	earliest_bus_id = 0
@@ -34,24 +38,30 @@ def part_two(start, bus_ids, offsets):
 
 
 def main():
-  with open('input.txt','r') as data:
-  	lines = data.readlines()
-  	start = int(lines[0])
-  	bus_ids = []
-  	offsets = {}
-  	offset = 0
+	start_time = time.time()
 
-  	for item in lines[1].split(','):
-  		if item != 'x':
-  			bus_id = int(item)
-  			bus_ids.append(bus_id)
-  			offsets[bus_id] = offset
-  			
-  		offset+=1
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		lines = data.readlines()
+		start = int(lines[0])
+		bus_ids = []
+		offsets = {}
+		offset = 0
 
-  	print('part 1: {}'.format(part_one(start, bus_ids)))
-  	print('part 2: {}'.format(part_two(start, bus_ids, offsets)))
+		for item in lines[1].split(','):
+			if item != 'x':
+				bus_id = int(item)
+				bus_ids.append(bus_id)
+				offsets[bus_id] = offset
+				
+			offset+=1
+
+		part_one_ans = part_one(start, bus_ids)
+		part_two_ans = part_two(start, bus_ids, offsets)
+
+		print('day 13 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 
 if __name__ == "__main__":
-    main()
+		main()

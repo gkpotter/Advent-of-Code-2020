@@ -1,12 +1,7 @@
 import re
+import time
+import os
 
-def part_one(rules):
-	total = 0
-
-	for bag in rules:
-		total += search(bag, rules)
-		
-	return total
 
 def search(bag, rules):
 	others = rules[bag]
@@ -20,8 +15,6 @@ def search(bag, rules):
 		
 		return any(search(other,rules) for other in others)
 
-def part_two(rules):
-	return count("shiny gold bag", rules)
 
 def count(bag, rules):
 	others= rules[bag]
@@ -30,25 +23,45 @@ def count(bag, rules):
 		return 0
 	else:
 		return sum(rules[bag][other]*(1+count(other,rules)) for other in others)
+
+
+def part_one(rules):
+	total = 0
+
+	for bag in rules:
+		total += search(bag, rules)
 		
+	return total
+
+
+def part_two(rules):
+	return count("shiny gold bag", rules)
+
+
 def main():
-  with open('input.txt','r') as data:
-  	lines = data.readlines()
-  	rules = {}
+	start_time = time.time()
 
-  	for line in lines:
-  		bag = re.findall(r'^.*?bag', line)[0]
-  		rules[bag] = {}
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		lines = data.readlines()
+		rules = {}
 
-  		for item in re.findall(r'[1-9].*?\ bag', line):
-  			l = item.split(' ')
-  			num = int(l[0])
-  			other = ' '.join(l[1:])
-  			rules[bag][other] = num
+		for line in lines:
+			bag = re.findall(r'^.*?bag', line)[0]
+			rules[bag] = {}
 
-  	print('part 1: {}'.format(part_one(rules)))
-  	print('part 2: {}'.format(part_two(rules)))
+			for item in re.findall(r'[1-9].*?\ bag', line):
+				l = item.split(' ')
+				num = int(l[0])
+				other = ' '.join(l[1:])
+				rules[bag][other] = num
+
+		part_one_ans = part_one(rules)
+		part_two_ans = part_two(rules)
+
+		print('day  7 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 		
 
 if __name__ == "__main__":
-    main()
+		main()

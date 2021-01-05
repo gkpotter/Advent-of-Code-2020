@@ -1,3 +1,6 @@
+import time
+import os
+
 compass = {
 	'N' : [0,1],
 	'E' : [1,0],
@@ -74,14 +77,18 @@ def part_two(instructions):
 
 
 def main():
-  with open('input.txt','r') as data:
-  	instructions = [[line[0],int(line[1:])] for line in data.readlines()]
-  	
-  	print(instructions)
+	start_time = time.time()
 
-  	print('part 1: {}'.format(part_one(instructions)))
-  	print('part 2: {}'.format(part_two(instructions)))
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		instructions = [[line[0],int(line[1:])] for line in data.readlines()]
+		
+		part_one_ans = part_one(instructions)
+		part_two_ans = part_two(instructions)
+
+		print('day 12 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 
 if __name__ == "__main__":
-    main()
+		main()

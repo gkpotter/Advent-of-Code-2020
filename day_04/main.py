@@ -1,14 +1,19 @@
+import time
+import os
+
 def part_one(passports):
 	total_valid = 0
 	for passport in passports:
 		total_valid += all_fields_present(passport)
 	return total_valid
-  			
+
+				
 def part_two(passports):
 	total_valid = 0
 	for passport in passports:
 		total_valid += validate(passport)
 	return total_valid
+
 
 def all_fields_present(passport):
 	fields = ['byr','iyr','eyr','hgt','hcl','ecl','pid']
@@ -16,6 +21,7 @@ def all_fields_present(passport):
 		if field not in passport:
 			return False
 	return True
+
 
 def validate(passport):
 	if not all_fields_present(passport):
@@ -52,14 +58,17 @@ def validate(passport):
 
 	return True
 
+
 def is_year(y):
 	return len(y) == 4 and all(is_digit(x) for x in y)
+
 
 def is_digit(x):
 	try:
 		return int(x) in range(0,10)
 	except:
 		return False
+
 
 def valid_height(hgt):
 	try:
@@ -70,6 +79,7 @@ def valid_height(hgt):
 		return False
 	except:
 		return False
+
 	
 def str_to_passport(s):
 	passport = {}
@@ -78,22 +88,29 @@ def str_to_passport(s):
 		passport[item[0]] = item[1]
 	return passport
 
+
 def main():
-  with open('input.txt','r') as data:
-  	passports = []
+	start_time = time.time()
 
-  	s = ''
-  	for line in data.readlines():
-  		if line == '\n':
-  			passports.append(str_to_passport(s))
-  			s = ''
-  		else:
-  			s += line.strip()+' '
-  	passports.append(str_to_passport(s))
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		passports = []
 
-  	print('part 1: {}'.format(part_one(passports)))
-  	print('part 2: {}'.format(part_two(passports)))
-  	
+		s = ''
+		for line in data.readlines():
+			if line == '\n':
+				passports.append(str_to_passport(s))
+				s = ''
+			else:
+				s += line.strip()+' '
+		passports.append(str_to_passport(s))
+
+		part_one_ans = part_one(passports)
+		part_two_ans = part_two(passports)
+
+		print('day  4 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
+		
 
 if __name__ == "__main__":
-    main()
+		main()

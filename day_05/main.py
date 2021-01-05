@@ -1,5 +1,10 @@
+import time
+import os
+
+
 def part_one(seats):
 	return max(get_id(seat) for seat in seats)
+
 
 def part_two(seats):
 	available = list(range(1,127*44+7+1))
@@ -8,6 +13,7 @@ def part_two(seats):
 	for seat in available:
 		if seat+1 not in available and seat-1 not in available:
 			return seat
+
 
 def get_id(seat):
 	row_bin = seat[0].replace('B','1').replace('F','0')
@@ -18,6 +24,7 @@ def get_id(seat):
 
 	return row * 8 + col
 
+
 def bin_to_dec(b):
 	b = str(b)
 	l = len(b)
@@ -26,14 +33,22 @@ def bin_to_dec(b):
 		if b[i] == '1':
 			d += 2**(l-i-1) 
 	return d
-	  			
+	
+
 def main():
-	with open('input.txt','r') as data:
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
 		seats = [ [line[:7], line[7:].strip()] 
-  		for line in data.readlines()]
-		print('part 1: {}'.format(part_one(seats)))
-		print('part 2: {}'.format(part_two(seats)))
-  	
+			for line in data.readlines()]
+
+		part_one_ans = part_one(seats)
+		part_two_ans = part_two(seats)
+
+		print('day  5 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
+		
 
 if __name__ == "__main__":
-    main()
+		main()

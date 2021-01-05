@@ -1,3 +1,7 @@
+import time
+import os
+
+
 def part_one(adapters):
 	ones = 0
 	threes = 0
@@ -33,14 +37,20 @@ def part_two(adapters):
 
 
 def main():
-  with open('input.txt','r') as data:
-  	adapters = [int(line) for line in data.readlines()]
-  	adapters.append(0)
-  	adapters.sort()
-  	adapters.append(adapters[-1]+3)
-  	
-  	print('part 1: {}'.format(part_one(adapters)))
-  	print('part 2: {}'.format(part_two(adapters)))
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		adapters = [int(line) for line in data.readlines()]
+		adapters.append(0)
+		adapters.sort()
+		adapters.append(adapters[-1]+3)
+		
+		part_one_ans = part_one(adapters)
+		part_two_ans = part_two(adapters)
+
+		print('day 10 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 if __name__ == "__main__":
-    main()
+		main()

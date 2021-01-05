@@ -1,3 +1,6 @@
+import time
+import os
+
 def part_one(fields, tickets):
 	total = 0
 	for ticket in tickets:
@@ -75,7 +78,9 @@ def part_two(fields, tickets, my_ticket):
 
 
 def main():
-	with open('input.txt','r') as data:
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
 		lines = [line.strip() for line in data.readlines()]
 		i = 0
 		fields = {}
@@ -102,13 +107,12 @@ def main():
 			tickets.append([int(x) for x in lines[i].strip().split(',')])
 			i+=1
 
+		part_one_ans = part_one(fields, tickets)
+		part_two_ans = part_two(fields, tickets, my_ticket)
 
-		print(fields)
-		print(my_ticket)
-		print(tickets)
-
-		print('part 1: {}'.format(part_one(fields, tickets)))
-		print('part 2: {}'.format(part_two(fields, tickets, my_ticket)))
+		print('day 16 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 if __name__ == "__main__":
-    main()
+		main()

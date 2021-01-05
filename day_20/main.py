@@ -1,4 +1,7 @@
 import math
+import time
+import os
+
 
 class Piece:
 	def __init__(self, num, grid):
@@ -33,8 +36,9 @@ class Piece:
 	def __repr__(self):
 		return str(self.num)
 
+
 def solve(board, pieces, n, row, col):
-	if col + n*row < n*n:	
+	if col + n*row < n*n: 
 		if col == n:
 			row += 1
 			col = 0
@@ -87,7 +91,7 @@ def get_image(board):
 	i = 0
 
 	while i < n*d:
-		if i%d not in [0,d-1]:	
+		if i%d not in [0,d-1]:  
 			for piece in board[i//d]:
 				line.extend(piece.grid[i%d][1:-1])
 
@@ -97,6 +101,7 @@ def get_image(board):
 		i+=1
 
 	return img
+
 
 def flipped(grid):
 	return [list(reversed(row)) for row in grid]
@@ -139,8 +144,8 @@ def part_two(board):
 	img = [list(line) for line in get_image(board)]
 
 	monsters = get_orientations(['                  # ',
-						 									 '#    ##    ##    ###',
-						 								   ' #  #  #  #  #  #   '])
+															 '#    ##    ##    ###',
+															 ' #  #  #  #  #  #   '])
 
 	for monster in monsters:
 		h = len(monster)
@@ -176,38 +181,41 @@ def part_two(board):
 
 
 def main():
-  with open('input.txt','r') as data:
-  	lines = [line.strip() for line in data.readlines()]
+	start_time = time.time()
 
-  	pieces = []
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		lines = [line.strip() for line in data.readlines()]
 
-  	i = 0
-  	num = -1
-  	grid = []
-  	
-  	while i < len(lines):
-  		line = lines[i]
+		pieces = []
 
-  		if line == '':
-  			pieces.append(Piece(num, grid))
-  			num = -1
-  			grid = []
-  		else:
-	  		if num == -1:
-	  			num = int(line[5:].strip(':'))
-	  		else:
-	  			grid.append(list(line))
+		i = 0
+		num = -1
+		grid = []
+		
+		while i < len(lines):
+			line = lines[i]
 
-	  	i += 1
-  	
-  	pieces.append(Piece(num, grid))
+			if line == '':
+				pieces.append(Piece(num, grid))
+				num = -1
+				grid = []
+			else:
+				if num == -1:
+					num = int(line[5:].strip(':'))
+				else:
+					grid.append(list(line))
 
-  	part_one_ans, board = part_one(pieces)
+			i += 1
+		
+		pieces.append(Piece(num, grid))
 
-  	print('part 1: {}'.format(part_one_ans))
-  	print('part 2: {}'.format(part_two(board)))
+		part_one_ans, board = part_one(pieces)
+		part_two_ans = part_two(board)
 
+		print('day 20  ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 
 if __name__ == "__main__":
-    main()
+		main()

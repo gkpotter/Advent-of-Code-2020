@@ -1,3 +1,7 @@
+import time
+import os
+
+
 def part_one(nums, k):
 	spoken = {}
 	for i in range(len(nums)):
@@ -25,11 +29,17 @@ def part_one(nums, k):
 
 
 def main():
-	with open('input.txt','r') as data:
+	start_time = time.time()
+
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
 		nums = [int(item) for item in data.readline().strip().split(',')]
 
-		print('part 1: {}'.format(part_one(nums, 2020)))
-		print('part 2: {}'.format(part_one(nums, 30000000)))
+		part_one_ans = part_one(nums, 2020)
+		part_two_ans = part_one(nums, 30000000)
+
+		print('day 15 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 if __name__ == "__main__":
-    main()
+		main()

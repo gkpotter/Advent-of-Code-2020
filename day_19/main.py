@@ -1,3 +1,6 @@
+import time
+import os
+
 # need to check each branch in parallel to avoid infinite loop
 def check(alphabet, grammar, word, start_symbol):
 	stack = [start_symbol]
@@ -48,26 +51,32 @@ def part_two(alphabet, grammar, words, start_symbol):
 
 
 def main():
-  with open('input.txt','r') as data:
-  	lines = [line.strip() for line in data.readlines()]
-  	
-  	grammar = {}
+	start_time = time.time()
 
-  	i = 0
-  	while lines[i] != '':
-  		items = lines[i].split(':')
+	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
+		lines = [line.strip() for line in data.readlines()]
+		
+		grammar = {}
 
-  		grammar[items[0]] = [match.strip().replace('"','').split(' ') for match in items[1].split('|')]
+		i = 0
+		while lines[i] != '':
+			items = lines[i].split(':')
 
-  		i+=1
+			grammar[items[0]] = [match.strip().replace('"','').split(' ') for match in items[1].split('|')]
 
-  	words = lines[i+1:]
-  	alphabet = ['a', 'b']
-  	start_symbol = '0'
+			i+=1
 
-  	print('part 1: {}'.format(part_one(alphabet, grammar, words, start_symbol)))
-  	print('part 2: {}'.format(part_two(alphabet, grammar, words, start_symbol)))
+		words = lines[i+1:]
+		alphabet = ['a', 'b']
+		start_symbol = '0'
+
+		part_one_ans = part_one(alphabet, grammar, words, start_symbol)
+		part_two_ans = part_two(alphabet, grammar, words, start_symbol)
+
+		print('day 19 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  part 1: {}'.format(part_one_ans))
+		print('  part 2: {}'.format(part_two_ans))
 
 
 if __name__ == "__main__":
-    main()
+		main()
