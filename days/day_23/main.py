@@ -7,18 +7,6 @@ class Cup:
 		self.left = None
 		self.right = None
 
-	def show(self):
-		print('('+str(self.num)+')',end='')
-		self._show(self)
-
-	def _show(self, first):
-		if self.right == first:
-			print('')
-			return
-		else:
-			print(self.right.num,end='')
-			self.right._show(first)
-
 	def __str__(self):
 		return str(self.num)
 
@@ -27,17 +15,13 @@ class Cup:
 
 
 def create_cups(nums):
-	cups = { nums[i]: Cup(nums[i]) for i in range(len(nums))}
-
-	cups[nums[0]].left = cups[nums[-1]]
-	cups[nums[0]].right = cups[nums[1]]
+	n = len(nums)
 	
-	for i in range(1,len(nums)-1):
-		cups[nums[i]].left = cups[nums[i-1]]
-		cups[nums[i]].right = cups[nums[i+1]]
+	cups = { nums[i]: Cup(nums[i]) for i in range(n)}
 
-	cups[nums[-1]].left = cups[nums[-2]]
-	cups[nums[-1]].right = cups[nums[0]]
+	for i in range(0,len(nums)):
+		cups[nums[i]].left = cups[nums[(i-1)%n]]
+		cups[nums[i]].right = cups[nums[(i+1)%n]]
 
 	return cups
 
@@ -53,21 +37,16 @@ def update(current, cups, n):
 	current.right = j
 	j.left = current
 
-	destination_num = current.num-1
+	dest = current.num - 1 if current.num > 1 else n
 
-	if destination_num < 1:
-		destination_num += n
+	while dest in picked_up:
+		dest = dest - 1 if dest > 1 else n
 
-	while destination_num in picked_up:
-		destination_num -= 1
-		if destination_num < 1:
-			destination_num += n
+	tmp = cups[dest].right
+	cups[dest].right.left = cups[picked_up[2]]
 
-	tmp = cups[destination_num].right
-	cups[destination_num].right.left = cups[picked_up[2]]
-
-	cups[destination_num].right = cups[picked_up[0]]
-	cups[picked_up[0]].left = cups[destination_num]
+	cups[dest].right = cups[picked_up[0]]
+	cups[picked_up[0]].left = cups[dest]
 	
 	cups[picked_up[2]].right = tmp
 
@@ -92,23 +71,9 @@ def part_one(nums):
 
 
 def part_two(nums):
+	nums.extend([*range(10, 10**6 + 1)])
 	cups = create_cups(nums)
-	current = cups[1]
-
-	for i in range(10, 10**6 + 1):
-		cups[i] = Cup(i)
-
-	for i in range(11, 10**6):
-		cups[i].right = cups[i+1]
-		cups[i].left = cups[i-1]
-
-	cups[2].right = cups[10]
-	cups[10].left = cups[2]
-	cups[10].right = cups[11]
-	cups[1].left = cups[10**6]
-	cups[10**6].right = cups[1]
-	cups[10**6].left = cups[10**6-1]
-
+	current = cups[nums[0]]
 	n = len(cups)
 
 	for i in range(10**7):

@@ -83,8 +83,6 @@ def part_two(tiles):
 
 		grid = updated_grid
 
-		print('Day {}: {}'.format(i+1,len(grid)))
-
 	return len(grid)
 
 
