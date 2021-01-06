@@ -42,7 +42,6 @@ def part_one(directions):
 			elif i == 'S':
 				coords[2] -= 1
 			
-
 		tile = get_tile(coords)
 
 		if tile in tiles:
@@ -50,45 +49,43 @@ def part_one(directions):
 		else:
 			tiles.append(tile)
 
-
 	return (len(tiles),tiles)
 
 
 def part_two(tiles):
-	for i in range(100):
-		checked = []
-		updated_tiles = []
+	grid = {}
+	for tile in tiles:
+		grid[tile] = True
 
-		for tile in tiles:
+	for i in range(100):
+		updated_grid = {}
+		adjacent = {}
+
+		for tile in grid:
 			neighbors = get_neighbors(tile)
 			b = 0
 			
 			for neighbor in neighbors:
-				b += tiles.count(neighbor)
-				if b > 2:
-					break
+				if neighbor not in grid:
+					if neighbor in adjacent:
+						adjacent[neighbor] += 1
+					else:
+						adjacent[neighbor] = 1
+				else:
+					b += 1
 			
 			if b in [1,2]:
-				updated_tiles.append(tile)
+				updated_grid[tile] = True
 
-			for neighbor in neighbors:
-				if neighbor not in tiles and neighbor not in checked:
-					b = 0
-					for other in get_neighbors(neighbor):
-						b += tiles.count(other)
-						if b>2:
-							break
+		for tile in adjacent:
+			if adjacent[tile] == 2:
+				updated_grid[tile] = True
 
-					if b == 2:
-						updated_tiles.append(neighbor)
-				checked.append(neighbor)
+		grid = updated_grid
 
+		print('Day {}: {}'.format(i+1,len(grid)))
 
-		tiles = updated_tiles
-
-		# print('Day {}: {}'.format(i+1,len(tiles)))
-
-	return len(tiles)
+	return len(grid)
 
 
 def main():
