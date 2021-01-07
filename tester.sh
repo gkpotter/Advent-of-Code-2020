@@ -12,4 +12,3 @@ do
 done
 
 mv ${tmp} test.log
-rm ${tmp}
