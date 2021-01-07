@@ -4,7 +4,6 @@ import os
 class Cup:
 	def __init__(self, num):
 		self.num = num
-		self.left = None
 		self.right = None
 
 	def __str__(self):
@@ -20,7 +19,6 @@ def create_cups(nums):
 	cups = { nums[i]: Cup(nums[i]) for i in range(n)}
 
 	for i in range(0,len(nums)):
-		cups[nums[i]].left = cups[nums[(i-1)%n]]
 		cups[nums[i]].right = cups[nums[(i+1)%n]]
 
 	return cups
@@ -35,7 +33,6 @@ def update(current, cups, n):
 		j = j.right
 
 	current.right = j
-	j.left = current
 
 	dest = current.num - 1 if current.num > 1 else n
 
@@ -43,11 +40,7 @@ def update(current, cups, n):
 		dest = dest - 1 if dest > 1 else n
 
 	tmp = cups[dest].right
-	cups[dest].right.left = cups[picked_up[2]]
-
 	cups[dest].right = cups[picked_up[0]]
-	cups[picked_up[0]].left = cups[dest]
-	
 	cups[picked_up[2]].right = tmp
 
 	return (cups[current.right.num], cups)
