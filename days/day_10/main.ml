@@ -18,6 +18,7 @@ let part_two diffs =
 ;;
 
 let () = 
+	let start_time = Unix.gettimeofday () in
 	let adapters =
 		let middle = file
 			|> In_channel.read_lines
@@ -34,6 +35,7 @@ let () =
 			in
 			a-prev)
 	in
-	printf "part 1: %d\n" (part_one diffs);
-	printf "part 2: %d\n" (part_two diffs)
+	printf "day 10 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
+	printf "  part 1: %d\n" (part_one diffs);
+	printf "  part 2: %d\n" (part_two diffs)
 ;;

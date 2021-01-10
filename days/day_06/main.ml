@@ -54,9 +54,11 @@ let get_groups l =
 ;;
 
 let () = 
+	let start_time = Unix.gettimeofday () in
 	let groups =
 		get_groups (In_channel.read_lines file)
 	in
-	printf "part 1: %d\n" (part_one groups);
-	printf "part 2: %d\n" (part_two groups);
+	printf "day 13 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
+	printf "  part 1: %d\n" (part_one groups);
+	printf "  part 2: %d\n" (part_two groups);
 ;;

@@ -53,10 +53,11 @@ let part_two seats =
 ;;
 
 let () = 
+	let start_time = Unix.gettimeofday () in
 	let seats = 
 		(In_channel.read_lines file) 
 	in
-	print_s [%sexp ((List.map seats ~f:(get_id)) : int list)];
-	printf "part 1: %d\n" (part_one seats);
-	printf "part 2: %d\n" (part_two seats)
+	printf "day 13 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
+	printf "  part 1: %d\n" (part_one seats);
+	printf "  part 2: %d\n" (part_two seats)
 ;;
