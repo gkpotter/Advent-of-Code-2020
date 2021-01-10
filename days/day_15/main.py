@@ -37,9 +37,9 @@ def main():
 		part_one_ans = part_one(nums, 2020)
 		part_two_ans = part_one(nums, 30000000)
 
-		print('day 15 ({:,.3f}s)'.format(time.time()-start_time))
-		print('  part 1: {}'.format(part_one_ans))
-		print('  part 2: {}'.format(part_two_ans))
+		print('Day 15 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  Part 1: {}'.format(part_one_ans))
+		print('  Part 2: {}'.format(part_two_ans))
 
 if __name__ == "__main__":
 		main()

@@ -58,9 +58,9 @@ def main():
 		part_one_ans = part_one(rules)
 		part_two_ans = part_two(rules)
 
-		print('day  7 ({:,.3f}s)'.format(time.time()-start_time))
-		print('  part 1: {}'.format(part_one_ans))
-		print('  part 2: {}'.format(part_two_ans))
+		print('Day  7 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  Part 1: {}'.format(part_one_ans))
+		print('  Part 2: {}'.format(part_two_ans))
 		
 
 if __name__ == "__main__":

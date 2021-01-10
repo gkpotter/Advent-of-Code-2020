@@ -90,9 +90,9 @@ def main():
 		part_one_ans = part_one(nums)
 		part_two_ans = part_two(nums)
 
-		print('day 23  ({:,.3f}s)'.format(time.time()-start_time))
-		print('  part 1: {}'.format(part_one_ans))
-		print('  part 2: {}'.format(part_two_ans))
+		print('Day 23  ({:,.3f}s)'.format(time.time()-start_time))
+		print('  Part 1: {}'.format(part_one_ans))
+		print('  Part 2: {}'.format(part_two_ans))
 
 
 if __name__ == "__main__":

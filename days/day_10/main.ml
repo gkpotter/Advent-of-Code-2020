@@ -35,7 +35,7 @@ let () =
 			in
 			a-prev)
 	in
-	printf "day 10 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
-	printf "  part 1: %d\n" (part_one diffs);
-	printf "  part 2: %d\n" (part_two diffs)
+	printf "Day 10 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
+	printf "  Part 1: %d\n" (part_one diffs);
+	printf "  Part 2: %d\n" (part_two diffs)
 ;;

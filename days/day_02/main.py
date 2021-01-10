@@ -42,9 +42,9 @@ def main():
 		part_one_ans = part_one(pw_data)
 		part_two_ans = part_two(pw_data)
 
-		print('day  2 ({:,.3f}s)'.format(time.time()-start_time))
-		print('  part 1: {}'.format(part_one_ans))
-		print('  part 2: {}'.format(part_two_ans))
+		print('Day  2 ({:,.3f}s)'.format(time.time()-start_time))
+		print('  Part 1: {}'.format(part_one_ans))
+		print('  Part 2: {}'.format(part_two_ans))
 		
 
 if __name__ == "__main__":

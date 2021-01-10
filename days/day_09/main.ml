@@ -59,7 +59,7 @@ let () =
 		|> List.map ~f:int_of_string
 	in
 	let n = (part_one nums) in
-	printf "day  9 (%.3fs)\n" ((Core.Unix.gettimeofday ()) -. start_time);
-	printf "  part 1: %d\n" n;
-	printf "  part 2: %d\n" (part_two nums n)
+	printf "Day  9 (%.3fs)\n" ((Core.Unix.gettimeofday ()) -. start_time);
+	printf "  Part 1: %d\n" n;
+	printf "  Part 2: %d\n" (part_two nums n)
 ;;

@@ -2,9 +2,10 @@
 
 tmp="test.tmp"
 
+# Test Python
 echo "Advent of Code 2020" | tee ${tmp}
-echo "" | tee ${tmp}
-echo "Python" | tee ${tmp}
+echo "" | tee -a ${tmp}
+echo "Python" | tee -a ${tmp}
 echo "-------------------------" | tee -a ${tmp}
 
 for i in $(seq -f "%02g" 1 25)
@@ -13,6 +14,7 @@ do
 	echo "-------------------------" | tee -a  ${tmp}
 done
 
+# Test OCaml
 echo "" | tee -a ${tmp}
 echo "OCaml" | tee -a ${tmp}
 echo "-------------------------" | tee -a  ${tmp}
@@ -27,3 +29,5 @@ do
 done
 
 mv ${tmp} test.log
+
+echo "Test results saved to: ./test.log"

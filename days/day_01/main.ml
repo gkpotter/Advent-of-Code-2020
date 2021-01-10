@@ -35,7 +35,7 @@ let () =
 	let nums = 
 		List.map (In_channel.read_lines file) ~f:int_of_string
 	in
-	printf "day  1 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
-	printf "  part 1: %d\n" (part_one nums);
-	printf "  part 2: %d\n" (part_two nums)
+	printf "Day  1 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
+	printf "  Part 1: %d\n" (part_one nums);
+	printf "  Part 2: %d\n" (part_two nums)
 ;;

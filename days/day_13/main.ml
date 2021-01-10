@@ -44,7 +44,7 @@ let () =
 			)
 		|> List.sort ~compare:(fun (a,_) (b,_) -> b-a)
 	in
-	printf "day 13 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
-	printf "  part 1: %d\n" (part_one start bus_ids);
-	printf "  part 2: %d\n" (part_two bus_ids)
+	printf "Day 13 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
+	printf "  Part 1: %d\n" (part_one start bus_ids);
+	printf "  Part 2: %d\n" (part_two bus_ids)
 ;;
