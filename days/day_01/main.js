@@ -14,7 +14,7 @@ async function loadData() {
 }
 
 function partOne(nums) {
-  for(let x of nums) {
+  for (let x of nums) {
     for (let y of nums) {
       if (x+y == 2020) {
         return x*y
@@ -24,7 +24,7 @@ function partOne(nums) {
 }
 
 function partTwo(nums) {
-  for(let x of nums) {
+  for (let x of nums) {
     for (let y of nums) {
       for (let z of nums) {
         if (x+y+z == 2020) {
