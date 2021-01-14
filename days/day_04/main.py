@@ -1,20 +1,6 @@
 import time
 import os
 
-def part_one(passports):
-	total_valid = 0
-	for passport in passports:
-		total_valid += all_fields_present(passport)
-	return total_valid
-
-				
-def part_two(passports):
-	total_valid = 0
-	for passport in passports:
-		total_valid += validate(passport)
-	return total_valid
-
-
 def all_fields_present(passport):
 	fields = ['byr','iyr','eyr','hgt','hcl','ecl','pid']
 	for field in fields:
@@ -87,6 +73,20 @@ def str_to_passport(s):
 	for item in items:
 		passport[item[0]] = item[1]
 	return passport
+
+
+def part_one(passports):
+	total_valid = 0
+	for passport in passports:
+		total_valid += all_fields_present(passport)
+	return total_valid
+
+				
+def part_two(passports):
+	total_valid = 0
+	for passport in passports:
+		total_valid += validate(passport)
+	return total_valid
 
 
 def main():
