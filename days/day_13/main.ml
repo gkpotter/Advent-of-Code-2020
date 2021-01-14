@@ -14,9 +14,8 @@ let part_one start bus_ids =
 	earliest * (time - start)
 ;;
 
-
-let part_two bus_ids =
-	(* solve x + a = 0 (mod m) by sieving*)
+(* solve x + a = 0 (mod m) by sieving*)
+let crt equations = 
 	let rec crt equations x step =
 		match equations with
 		| (m, a) :: rest ->
@@ -25,9 +24,9 @@ let part_two bus_ids =
 			else crt equations (x+step) step
 		| [] -> x
 	in
-	crt bus_ids 0 1 
-;;
+	crt equations 0 1
 
+let part_two bus_ids = crt bus_ids 
 
 let () = 
 	let start_time = Unix.gettimeofday () in
