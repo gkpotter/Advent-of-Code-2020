@@ -1,16 +1,16 @@
 const fs = require('fs');
 const readline = require('readline');
 
-async function loadData() {
+async function loadInput() {
   const rl = readline.createInterface({
     input: fs.createReadStream('input.txt')
   });
 
-  const data = [];
+  const lines = [];
   for await (const line of rl) {
-    data.push(Number(line));
+    lines.push(line);
   }
-  return data
+  return lines
 }
 
 function partOne(nums) {
@@ -36,9 +36,20 @@ function partTwo(nums) {
 }
 
 async function main() {
-  const nums = await loadData();
-  console.log(`part 1: ${partOne(nums)}`);
-  console.log(`part 2: ${partTwo(nums)}`);
+	const start_time = process.hrtime() 
+  
+  const lines = await loadInput();
+  const nums = lines.map(line => Number(line))
+
+  const part_one_ans = partOne(nums)
+  const part_two_ans = partTwo(nums)
+  
+  const diff = process.hrtime(start_time)
+  const total_time = (diff[0] + diff[1]/1e9).toFixed(3)
+  
+  console.log(`Day  1 (${total_time}s)`)
+  console.log(`  Part 1: ${part_one_ans}`);
+  console.log(`  Part 2: ${part_one_ans}`);
 }
 
 if (require.main === module) {
