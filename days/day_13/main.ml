@@ -10,6 +10,7 @@ let part_one start bus_ids =
 		| Some bus_id -> (bus_id, time)
 		| None -> check (time+1)
 	in
+	
 	let (earliest,_), time = check start in
 	earliest * (time - start)
 ;;
@@ -31,6 +32,7 @@ let part_two bus_ids = crt bus_ids
 let () = 
 	let start_time = Unix.gettimeofday () in
 	let input = In_channel.create file in
+	
 	let start = int_of_string (Option.value_exn (In_channel.input_line input)) in
 	let bus_ids = 
 		input
@@ -43,8 +45,10 @@ let () =
 			)
 		|> List.sort ~compare:(fun (a,_) (b,_) -> b-a)
 	in
+	
 	let part_one_ans = part_one start bus_ids in
 	let part_two_ans = part_two bus_ids in
+	
 	printf "Day 13 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
 	printf "  Part 1: %d\n" part_one_ans;
 	printf "  Part 2: %d\n" part_two_ans

@@ -17,7 +17,7 @@ def mult(k, u):
 	return [k*u[i] for i in range(len(u))]
 
 
-def rotate_left(u, deg):
+def rotate_CCW(u, deg):
 	x, y = u
 	while deg < 0:
 		deg += 360
@@ -49,7 +49,7 @@ def part_one(instructions):
 			if letter == 'R':
 				deg *= -1
 
-			direction = rotate_left(direction, deg)
+			direction = rotate_CCW(direction, deg)
 
 	return sum(abs(x) for x in pos) 
 
@@ -71,7 +71,7 @@ def part_two(instructions):
 			if letter == 'R':
 				deg *= -1
 
-			waypoint = rotate_left(waypoint, deg)
+			waypoint = rotate_CCW(waypoint, deg)
 
 	return sum(abs(x) for x in pos)
 
