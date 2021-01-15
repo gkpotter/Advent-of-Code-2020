@@ -8,24 +8,24 @@ def part_one(nums, k):
 		spoken[nums[i]] = (i, i)
 
 	i = len(nums)
+	recent = nums[-1]
+	
 	while(i<k):
-		recent = nums[-1]
 		prev, prevprev = spoken[recent]
 
 		if prev == prevprev:
-			num = 0
+			recent = 0
 		else:
-			num = prev - prevprev
+			recent = prev - prevprev
 		
-		if num in spoken:
-			spoken[num] = (i, spoken[num][0])
+		if recent in spoken:
+			spoken[recent] = (i, spoken[recent][0])
 		else:
-			spoken[num] = (i,i)
+			spoken[recent] = (i,i)
 		
-		nums.append(num)
 		i+=1
 
-	return nums[k-1]
+	return recent
 
 
 def main():
