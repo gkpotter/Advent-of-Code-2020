@@ -4,7 +4,6 @@ import os
 
 
 def attempt(instructions):
-	seen = []
 	acc = 0
 	i = 0
 	steps = 0
@@ -15,7 +14,6 @@ def attempt(instructions):
 			return -1
 		
 		instr = instructions[i]
-		seen.append(i)
 		
 		if instr[0] == 'nop':
 			i+=1
