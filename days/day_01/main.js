@@ -3,7 +3,7 @@ const readline = require('readline');
 
 async function loadInput() {
   const rl = readline.createInterface({
-    input: fs.createReadStream('input.txt')
+    input: fs.createReadStream(__dirname + '/input.txt')
   });
 
   const lines = [];
@@ -49,7 +49,7 @@ async function main() {
   
   console.log(`Day  1 (${total_time}s)`)
   console.log(`  Part 1: ${part_one_ans}`);
-  console.log(`  Part 2: ${part_one_ans}`);
+  console.log(`  Part 2: ${part_two_ans}`);
 }
 
 if (require.main === module) {
