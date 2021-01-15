@@ -49,7 +49,9 @@ let () =
 			| _ -> failwith "nope"
 		)
 	in
-	printf "Day  1 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
-	printf "  Part 1: %d\n" (part_one entries);
-	printf "  Part 2: %d\n" (part_two entries)
+	let part_one_ans = part_one entries in
+	let part_two_ans = part_two entries in
+	printf "Day  2 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
+	printf "  Part 1: %d\n" part_one_ans;
+	printf "  Part 2: %d\n" part_two_ans
 ;;

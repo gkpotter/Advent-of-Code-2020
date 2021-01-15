@@ -36,7 +36,9 @@ let () =
 		input
 		|> List.map ~f:(String.to_list)
 	in
-	printf "Day  1 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
-	printf "  Part 1: %d\n" (part_one rows);
-	printf "  Part 2: %d\n" (part_two rows)
+	let part_one_ans = part_one rows in
+	let part_two_ans = part_two rows in
+	printf "Day  3 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
+	printf "  Part 1: %d\n" part_one_ans;
+	printf "  Part 2: %d\n" part_two_ans
 ;;
