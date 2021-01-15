@@ -58,8 +58,9 @@ let () =
 		|> In_channel.read_lines
 		|> List.map ~f:int_of_string
 	in
-	let n = (part_one nums) in
+	let part_one_ans = part_one nums in
+	let part_two_ans = part_two nums part_one_ans in
 	printf "Day  9 (%.3fs)\n" ((Core.Unix.gettimeofday ()) -. start_time);
-	printf "  Part 1: %d\n" n;
-	printf "  Part 2: %d\n" (part_two nums n)
+	printf "  Part 1: %d\n" part_one_ans;
+	printf "  Part 2: %d\n" part_two_ans
 ;;
