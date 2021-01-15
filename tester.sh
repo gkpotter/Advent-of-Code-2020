@@ -15,7 +15,7 @@ done
 # Test OCaml
 echo -e "\nOCaml" | tee -a ${tmp}
 echo "-------------------------" | tee -a  ${tmp}
-for i in "01" "05" "06" "09" "10" "13"
+for i in "01" "02" "03" "05" "06" "08" "09" "10" "13"
 do
 	cd days/day_${i}/
 	corebuild main.native -quiet
@@ -25,6 +25,17 @@ do
 	echo "-------------------------" | tee -a  ${tmp}
 done
 
+# Test Node.js
+echo -e "\nNode.js" | tee -a ${tmp}
+echo "-------------------------" | tee -a  ${tmp}
+for i in "01" "04" "07"
+do
+	node days/day_${i}/main.js | tee -a ${tmp}
+	echo "-------------------------" | tee -a  ${tmp}
+done
+
 mv ${tmp} test.log
 
 echo "Test results saved to: ./test.log"
+
+exit 0

@@ -3,30 +3,27 @@ import os
 
 
 def update_grid(grid, rows, cols, occupied_threshold, search_visible=False):
-	changed = True
+	changed = False
 
-	while changed:
-		changed = False
+	updated_grid = []
+	for i in range(rows):
+		updated_grid.append(grid[i].copy())
 
-		updated_grid = []
-		for i in range(rows):
-			updated_grid.append(grid[i].copy())
+	for i in range(rows):
+		for j in range(cols):
+			spot = grid[i][j]
 
-		for i in range(rows):
-			for j in range(cols):
-				spot = grid[i][j]
+			if spot != '.':
+				occupied = get_occupied([i,j], rows, cols, grid, search_visible)
 
-				if spot != '.':
-					occupied = get_occupied([i,j], rows, cols, grid, search_visible)
-
-					if spot == '#' and occupied >= occupied_threshold:
-						updated_grid[i][j] = 'L'
-						changed = True
-					elif spot == 'L' and occupied == 0:
-						updated_grid[i][j] = '#'
-						changed = True
-		
-		return [updated_grid, changed]
+				if spot == '#' and occupied >= occupied_threshold:
+					updated_grid[i][j] = 'L'
+					changed = True
+				elif spot == 'L' and occupied == 0:
+					updated_grid[i][j] = '#'
+					changed = True
+	
+	return [updated_grid, changed]
 
 
 def in_grid(spot, rows, cols):
