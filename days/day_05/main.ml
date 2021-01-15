@@ -57,7 +57,9 @@ let () =
 	let seats = 
 		(In_channel.read_lines file) 
 	in
+	let part_one_ans = part_one seats in
+	let part_two_ans = part_two seats in
 	printf "Day  5 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
-	printf "  Part 1: %d\n" (part_one seats);
-	printf "  Part 2: %d\n" (part_two seats)
+	printf "  Part 1: %d\n" part_one_ans;
+	printf "  Part 2: %d\n" part_two_ans
 ;;
