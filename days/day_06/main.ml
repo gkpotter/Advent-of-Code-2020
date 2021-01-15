@@ -58,7 +58,9 @@ let () =
 	let groups =
 		get_groups (In_channel.read_lines file)
 	in
+	let part_one_ans = part_one groups in
+	let part_two_ans = part_two groups in
 	printf "Day  6 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
-	printf "  Part 1: %d\n" (part_one groups);
-	printf "  Part 2: %d\n" (part_two groups);
+	printf "  Part 1: %d\n" part_one_ans;
+	printf "  Part 2: %d\n" part_two_ans;
 ;;
