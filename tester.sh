@@ -28,7 +28,7 @@ done
 # Test Node.js
 echo -e "\nNode.js" | tee -a ${tmp}
 echo "-------------------------" | tee -a  ${tmp}
-for i in "01" "04" "07" "11"
+for i in "01" "04" "07" "11" "12" "14"
 do
 	node days/day_${i}/main.js | tee -a ${tmp}
 	echo "-------------------------" | tee -a  ${tmp}
