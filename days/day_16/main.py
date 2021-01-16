@@ -19,7 +19,6 @@ def part_one(fields, tickets):
 
 
 def part_two(fields, tickets, my_ticket):
-	total = 0
 	valid_tickets = []
 
 	for ticket in tickets:
@@ -40,7 +39,6 @@ def part_two(fields, tickets, my_ticket):
 		if ticket_valid:
 			valid_tickets.append(ticket)
 
-	field_order = []
 	possible_fields = []
 
 	for entry_num in range(len(my_ticket)):
@@ -59,14 +57,14 @@ def part_two(fields, tickets, my_ticket):
 			if valid:
 				possible_fields[entry_num].append(field)
 
-	while not all(len(fields)==1 for fields in possible_fields):
-		for fields in possible_fields:
-			if len(fields)==1:
+	while not all(len(field_list)==1 for field_list in possible_fields):
+		for field_list in possible_fields:
+			if len(field_list)==1:
 				for other in possible_fields:
-					if len(other) != 1 and fields[0] in other:
-						other.remove(fields[0])
+					if len(other) != 1 and field_list[0] in other:
+						other.remove(field_list[0])
 
-	field_order = [fields[0] for fields in possible_fields]
+	field_order = [field_list[0] for field_list in possible_fields]
 
 	prod = 1
 	for i in range(len(my_ticket)):

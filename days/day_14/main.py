@@ -6,6 +6,7 @@ def bitmask(value, mask):
 	b = str(bin(value))[2:].zfill(len(mask))
 	masked_b = [b[i] if mask[i]=='X' else mask[i] for i in range(len(mask))]
 	masked_value = int(''.join(masked_b), 2)
+	
 	return masked_value
 
 
