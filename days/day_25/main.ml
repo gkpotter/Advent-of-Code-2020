@@ -38,7 +38,8 @@ let () =
 	let card_key = int_of_string (Option.value_exn (In_channel.input_line input)) in
 	let door_key = int_of_string (Option.value_exn (In_channel.input_line input)) in
 	let part_one_ans = part_one card_key door_key 7 in
+	let part_two_ans = "⭐️" in
 	printf "Day 25 (%.3fs)\n" ((Unix.gettimeofday ()) -. start_time);
 	printf "  Part 1: %d\n" part_one_ans;
-	printf "  Part 2: ⭐️\n"
+	printf "  Part 2: %s\n" part_two_ans
 ;;
