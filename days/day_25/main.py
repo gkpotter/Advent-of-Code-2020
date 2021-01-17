@@ -2,40 +2,40 @@
 import time
 import os
 
-sympy_available = False
-try:
-	from sympy.ntheory.residue_ntheory import discrete_log
-	sympy_available = True
-except:
-	print('Sympy not available. Brute forcing...')
-
-
 def transform(subject, loop):
 	value = 1
+	modulus = 20201227
 	while loop >= 1:
 		if loop % 2 == 1:	
 			value *= subject
-			value %= 20201227
+			value %= modulus
 		
 		subject *= subject
-		subject %= 20201227
+		subject %= modulus
 
 		loop//=2
 	return value
 
 
+def find_loop(key, subject):
+	loop = 1
+	while transform(subject, loop) != key:
+		loop += 1
+	return loop
+
+
 def part_one(card_key, door_key, subject):
-	if sympy_available:
-		card_loop = discrete_log(20201227, card_key, 7)
-		door_loop = discrete_log(20201227, door_key, 7)
-	else:
-		card_loop = 1
-		while transform(subject, card_loop) != card_key:
-			card_loop += 1
-		
-		door_loop = 1
-		while transform(subject, door_loop) != door_key:
-			door_loop += 1
+	"""
+	Using Sympy's discrete log:
+
+	from sympy.ntheory.residue_ntheory import discrete_log
+
+	card_loop = discrete_log(20201227, card_key, subject)
+	door_loop = discrete_log(20201227, door_key, subject)
+	"""
+
+	card_loop = find_loop(card_key, subject)
+	door_loop = find_loop(door_key, subject)
 
 	return transform(transform(subject, door_loop), card_loop)
 
