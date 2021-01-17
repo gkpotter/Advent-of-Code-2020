@@ -31,7 +31,7 @@ Below is a table recording which puzzles I solved with each language. Every day 
 | 22  |  ⭐️⭐️  |  ❓   |    -    |
 | 23  |  ⭐️⭐️  |   -   |   ❓    |
 | 24  |  ⭐️⭐️  |   -   |   ❓    |
-| 25  |  ⭐️⭐️  |  ⭐️⭐️ |    -    |
+| 25  |  ⭐️⭐️  |  ⭐️⭐️ |  ❓    |
 |     |         |       |         |
 |Total|   50⭐️ |  22⭐️ |   14⭐️  |
 
