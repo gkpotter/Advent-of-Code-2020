@@ -27,7 +27,7 @@ def part_one(ingredient_lists, allergen_lists):
 						bad_foods[other] = bad_foods[other].difference(bad_foods[allergen])
 			else:
 				done = False
-	
+
 	all_bad_foods = set.union(*bad_foods.values())
 
 	good_count = 0
