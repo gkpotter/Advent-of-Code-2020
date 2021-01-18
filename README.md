@@ -27,7 +27,7 @@ Below is a table recording which puzzles I solved with each language. Every day 
 | 18  |  ⭐️⭐️  |  ❓   |    -    |
 | 19  |  ⭐️⭐️  |  ❓   |   ❓    |
 | 20  |  ⭐️⭐️  |   -   |   ❓    |
-| 21  |  ⭐️⭐️  |   -   |   ❓    |
+| 21  |  ⭐️⭐️  |   -   |  ⭐️⭐️   |
 | 22  |  ⭐️⭐️  |  ⭐️⭐️ |    -    |
 | 23  |  ⭐️⭐️  |   -   |  ⭐️⭐️   |
 | 24  |  ⭐️⭐️  |   -   |  ⭐️⭐️  |
