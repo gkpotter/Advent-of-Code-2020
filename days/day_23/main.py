@@ -66,14 +66,15 @@ def part_one(nums):
 def part_two(nums):
 	nums.extend([*range(10, 10**6 + 1)])
 	cups = create_cups(nums)
-	current = cups[nums[0]]
+	start = nums[0]
+	current = cups[start]
 	n = len(cups)
 
 	for i in range(10**7):
 		current, cups = update(current, cups, n)
 
 	total = 1
-	j = cups[nums[0]].right
+	j = cups[start].right
 	for i in range(2):
 		total *= j.num
 		j = j.right
