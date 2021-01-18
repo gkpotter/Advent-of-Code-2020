@@ -28,7 +28,7 @@ def update(current, cups, n):
 	picked_up = []
 
 	j = current.right
-	for i in range(1,4):
+	for i in range(3):
 		picked_up.append(j.num)
 		j = j.right
 
@@ -46,9 +46,9 @@ def update(current, cups, n):
 	return (cups[current.right.num], cups)
 
 def part_one(nums):
+	n = len(nums)
 	cups = create_cups(nums)
-	n = len(cups)
-	current = cups[1]
+	current = cups[nums[0]]
 
 	for i in range(100):
 		current, cups = update(current, cups, n)
@@ -73,8 +73,8 @@ def part_two(nums):
 		current, cups = update(current, cups, n)
 
 	total = 1
-	j = cups[1].right
-	for i in range(1, 3):
+	j = cups[nums[0]].right
+	for i in range(2):
 		total *= j.num
 		j = j.right
 	

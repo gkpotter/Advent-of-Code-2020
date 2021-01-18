@@ -22,7 +22,7 @@ def get_neighbors(tile):
 	return neighbors
 
 def part_one(directions):
-	tiles = []
+	tiles = set()
 
 	for d in directions:
 		coords = [0,0,0]
@@ -47,26 +47,22 @@ def part_one(directions):
 		if tile in tiles:
 			tiles.remove(tile)
 		else:
-			tiles.append(tile)
+			tiles.add(tile)
 
 	return (len(tiles),tiles)
 
 
 def part_two(tiles):
-	grid = {}
-	for tile in tiles:
-		grid[tile] = True
-
 	for i in range(100):
-		updated_grid = {}
+		updated_tiles = set()
 		adjacent = {}
 
-		for tile in grid:
+		for tile in tiles:
 			neighbors = get_neighbors(tile)
 			b = 0
 			
 			for neighbor in neighbors:
-				if neighbor not in grid:
+				if neighbor not in tiles:
 					if neighbor in adjacent:
 						adjacent[neighbor] += 1
 					else:
@@ -75,15 +71,15 @@ def part_two(tiles):
 					b += 1
 			
 			if b in [1,2]:
-				updated_grid[tile] = True
+				updated_tiles.add(tile)
 
 		for tile in adjacent:
 			if adjacent[tile] == 2:
-				updated_grid[tile] = True
+				updated_tiles.add(tile)
 
-		grid = updated_grid
+		tiles = updated_tiles
 
-	return len(grid)
+	return len(tiles)
 
 
 def main():
@@ -95,7 +91,7 @@ def main():
 		directions = []
 
 		for line in lines:
-			directions.append(line.replace('ne','N').replace('nw','n').replace('se','s').replace('sw','S'))
+			directions.append(line.replace('ne','N').replace('nw','n').replace('sw','S').replace('se','s'))
 
 		part_one_ans, tiles = part_one(directions)
 		part_two_ans = part_two(tiles)

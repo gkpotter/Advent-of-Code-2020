@@ -66,7 +66,7 @@ def main():
 	start_time = time.time()
 
 	with open(os.path.dirname(__file__) + '/input.txt', 'r') as data:
-		lines = [line.strip(')\n') for line in data.readlines()]
+		lines = [line.strip('\n') for line in data.readlines()]
 
 		i = lines.index('Player 2:')
 		
