@@ -23,7 +23,7 @@ Below is a table recording which puzzles I solved with each language. Every day 
 | 14  |  ⭐️⭐️  |   -   |   ⭐️⭐️  |
 | 15  |  ⭐️⭐️  |  ⭐️⭐️ |    -    |
 | 16  |  ⭐️⭐️  |   -   |   ⭐️⭐️  |
-| 17  |  ⭐️⭐️  |   -   |   ❓    |
+| 17  |  ⭐️⭐️  |   -   |   ⭐️⭐️  |
 | 18  |  ⭐️⭐️  |  ❓   |    -    |
 | 19  |  ⭐️⭐️  |  ❓   |   ❓    |
 | 20  |  ⭐️⭐️  |   -   |   ❓    |
