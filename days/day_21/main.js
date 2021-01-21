@@ -30,9 +30,7 @@ function partOne(ingredient_lists, allergen_lists) {
         }
 
       }
-    }
-
-    
+    }  
   }
 
   let done = false

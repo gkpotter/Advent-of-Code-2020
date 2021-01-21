@@ -184,7 +184,7 @@ async function main() {
   const diff = process.hrtime(start_time)
   const total_time = (diff[0] + diff[1]/1e9).toFixed(3)
   
-  console.log(`Day  1 (${total_time}s)`)
+  console.log(`Day 17 (${total_time}s)`)
   console.log(`  Part 1: ${part_one_ans}`);
   console.log(`  Part 2: ${part_two_ans}`);
 }
