@@ -188,13 +188,10 @@ def main():
 
 		pieces = []
 
-		i = 0
 		num = -1
 		grid = []
 		
-		while i < len(lines):
-			line = lines[i]
-
+		for line in lines:
 			if line == '':
 				pieces.append(Piece(num, grid))
 				num = -1
@@ -205,7 +202,6 @@ def main():
 				else:
 					grid.append(list(line))
 
-			i += 1
 		
 		pieces.append(Piece(num, grid))
 
