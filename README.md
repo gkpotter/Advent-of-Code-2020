@@ -10,7 +10,7 @@ Below is a table recording which puzzles I solved with each language. Every day 
 |  1 	|  ⭐️⭐️  |  ⭐️⭐️ |  ⭐️⭐️   |
 |  2  |  ⭐️⭐️  |  ⭐️⭐️ |    -    |
 |  3  |  ⭐️⭐️  |  ⭐️⭐️ |    -    |
-|  4  |  ⭐️⭐️  |   -   |   ⭐️⭐️  |
+|  4  |  ⭐️⭐️  |  ⭐️⭐️ |   ⭐️⭐️  |
 |  5  |  ⭐️⭐️  |  ⭐️⭐️ |    -    |
 |  6  |  ⭐️⭐️  |  ⭐️⭐️ |    -    |
 |  7  |  ⭐️⭐️  |   -   |   ⭐️⭐️  |
@@ -24,8 +24,8 @@ Below is a table recording which puzzles I solved with each language. Every day 
 | 15  |  ⭐️⭐️  |  ⭐️⭐️ |    -    |
 | 16  |  ⭐️⭐️  |   -   |   ⭐️⭐️  |
 | 17  |  ⭐️⭐️  |   -   |   ⭐️⭐️  |
-| 18  |  ⭐️⭐️  |  ❓   |    -    |
-| 19  |  ⭐️⭐️  |  ❓   |   ❓    |
+| 18  |  ⭐️⭐️  |   -   |   ⭐️⭐️  |
+| 19  |  ⭐️⭐️  |  ❓   |    -   |
 | 20  |  ⭐️⭐️  |   -   |   ❓    |
 | 21  |  ⭐️⭐️  |   -   |  ⭐️⭐️   |
 | 22  |  ⭐️⭐️  |  ⭐️⭐️ |    -    |
@@ -33,7 +33,7 @@ Below is a table recording which puzzles I solved with each language. Every day 
 | 24  |  ⭐️⭐️  |   -   |  ⭐️⭐️  |
 | 25  |  ⭐️⭐️  |  ⭐️⭐️ |  ⭐️⭐️  |
 |     |         |       |         |
-|Total|   50⭐️ |  24⭐️ |   20⭐️  |
+|Total|   50⭐️ |  26⭐️ |   26⭐️  |
 
 
 ❓ = to be completed
