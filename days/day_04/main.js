@@ -34,13 +34,13 @@ function allFieldsPresent(passport) {
   return true;
 }
 
-function validate(passport) {
+function isValid(passport) {
   if (!allFieldsPresent(passport)) {
     return false
   }
 
   byr = passport['byr']
-  if (!/^(19[2-9]\d|200[0-2])$/g.test(byr)) {
+  if (!/^(19[2-9]\d|200[0-2])$/.test(byr)) {
     return false
   }
 
@@ -88,7 +88,7 @@ function partOne(passports) {
 function partTwo(passports) {
  let total_valid = 0
   for (const passport of passports){
-    total_valid += validate(passport);
+    total_valid += isValid(passport);
   }
   return total_valid
 }

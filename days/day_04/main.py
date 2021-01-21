@@ -9,7 +9,7 @@ def all_fields_present(passport):
 	return True
 
 
-def validate(passport):
+def is_valid(passport):
 	if not all_fields_present(passport):
 		return False
 
@@ -85,7 +85,7 @@ def part_one(passports):
 def part_two(passports):
 	total_valid = 0
 	for passport in passports:
-		total_valid += validate(passport)
+		total_valid += is_valid(passport)
 	return total_valid
 
 
