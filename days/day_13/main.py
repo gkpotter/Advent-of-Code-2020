@@ -3,7 +3,7 @@ import os
 
 
 def part_one(start, bus_ids):
-	time = start-1
+	time = start - 1
 	earliest_bus_id = 0
 
 	while earliest_bus_id == 0:
@@ -53,12 +53,12 @@ def main():
 				bus_ids.append(bus_id)
 				offsets[bus_id] = offset
 				
-			offset+=1
+			offset += 1
 
 		part_one_ans = part_one(start, bus_ids)
 		part_two_ans = part_two(start, bus_ids, offsets)
 
-		print('Day 13 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 13 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

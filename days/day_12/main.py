@@ -8,13 +8,12 @@ compass = {
 	'W' : [-1,0]
 }
 
-
 def add(u, v):
-	return [u[i]+v[i] for i in range(len(u))]
+	return [u[i] + v[i] for i in range(len(u))]
 
 
 def mult(k, u):
-	return [k*u[i] for i in range(len(u))]
+	return [k * u[i] for i in range(len(u))]
 
 
 def rotate_CCW(u, deg):
@@ -23,9 +22,9 @@ def rotate_CCW(u, deg):
 		deg += 360
 
 	if deg == 90:
-		return [-y,x]
+		return [-y, x]
 	elif deg == 180:
-		return [-x,-y]
+		return [-x, -y]
 	elif deg == 270:
 		return [y, -x]
 	else:
@@ -85,7 +84,7 @@ def main():
 		part_one_ans = part_one(instructions)
 		part_two_ans = part_two(instructions)
 
-		print('Day 12 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 12 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

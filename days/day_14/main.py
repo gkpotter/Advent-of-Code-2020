@@ -15,7 +15,7 @@ def floating_bitmask(value, mask):
 	masked_b = [b[i] if mask[i]=='0' else mask[i] for i in range(len(mask))]
 	floating_b = ''.join(masked_b)
 	
-	return resolve_floating(floating_b,[])
+	return resolve_floating(floating_b, [])
 
 
 def resolve_floating(floating_b, b_list):
@@ -25,8 +25,10 @@ def resolve_floating(floating_b, b_list):
 		if floating_b[i] == 'X':
 			decide_0 = floating_b[:i] + '0' + floating_b[i+1:]
 			decide_1 = floating_b[:i] + '1' + floating_b[i+1:]
-			resolve_floating(decide_0,b_list)
-			resolve_floating(decide_1,b_list)
+			
+			resolve_floating(decide_0, b_list)
+			resolve_floating(decide_1, b_list)
+			
 			branched = True
 			break
 
@@ -47,7 +49,7 @@ def part_one(instructions):
 			address = int(instr[0][4:-1])
 			value = int(instr[1])
 
-			masked_value = bitmask(value,mask)
+			masked_value = bitmask(value, mask)
 			
 			mem[address] = masked_value
 
@@ -65,7 +67,7 @@ def part_two(instructions):
 			address = int(instr[0][4:-1])
 			value = int(instr[1])
 
-			masked_addresses = floating_bitmask(address,mask)
+			masked_addresses = floating_bitmask(address, mask)
 
 			for masked_address in masked_addresses:
 				mem[masked_address] = value
@@ -82,7 +84,7 @@ def main():
 		part_one_ans = part_one(instructions)
 		part_two_ans = part_two(instructions)
 
-		print('Day 14 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 14 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

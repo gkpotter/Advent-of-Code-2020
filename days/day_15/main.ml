@@ -15,9 +15,9 @@ let part_one nums k =
 				| Some (prev, _) -> (i, prev)
 				| None -> (i, i)
 			);
-			take_turn (i+1) new_recent
+			take_turn (i + 1) new_recent
 	in
-	take_turn (List.length nums) (List.nth_exn nums ((List.length nums)-1))
+	take_turn (List.length nums) (List.nth_exn nums ((List.length nums) - 1))
 ;;
 
 let () = 

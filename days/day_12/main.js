@@ -6,8 +6,9 @@ const compass = {
 	'E' : [1,0],
 	'S' : [0,-1],
 	'W' : [-1,0]
-}
-const directions = Object.keys(compass)
+};
+
+const directions = Object.keys(compass);
 
 async function loadInput() {
 	const rl = readline.createInterface({
@@ -18,15 +19,15 @@ async function loadInput() {
 	for await (const line of rl) {
 		lines.push(line);
 	}
-	return lines
+	return lines;
 }
 
 function add(u, v) {
-	return u.map((u_i, i) => u_i + v[i])
+	return u.map((u_i, i) => u_i + v[i]);
 }
 
 function mult(k, u) {
-	return u.map(u_i => k * u_i)
+	return u.map(u_i => k * u_i);
 }
 
 function rotateCCW(u, deg) {
@@ -51,24 +52,24 @@ function rotateCCW(u, deg) {
 
 
 function partOne(instructions) {
-	let direction = [1,0]
-	let pos = [0,0]
+	let direction = [1,0];
+	let pos = [0,0];
 
 	for (const [letter, num] of instructions) {
 		if (directions.includes(letter)) {
-			pos = add(pos, mult(num, compass[letter]))
+			pos = add(pos, mult(num, compass[letter]));
 		}
 		else if (letter == 'F') {
-			pos = add(pos, mult(num, direction))
+			pos = add(pos, mult(num, direction));
 		}
 		else {
-			deg = num
+			deg = num;
 
 			if (letter == 'R') {
-				deg *= -1
+				deg *= -1;
 			}
 
-			direction = rotateCCW(direction, deg)
+			direction = rotateCCW(direction, deg);
 		}
 	}
 
@@ -76,24 +77,24 @@ function partOne(instructions) {
 }
 
 function partTwo(instructions) {
-	let pos = [0,0]
-	let waypoint = [10,1]
+	let pos = [0,0];
+	let waypoint = [10,1];
 
 	for (const [letter, num] of instructions) {
 		if (directions.includes(letter)) {
-			waypoint = add(waypoint, mult(num, compass[letter]))
+			waypoint = add(waypoint, mult(num, compass[letter]));
 		}
 		else if (letter == 'F') {
-			pos = add(pos, mult(num, waypoint))
+			pos = add(pos, mult(num, waypoint));
 		}
 		else {
-			deg = num
+			deg = num;
 
 			if (letter == 'R') {
-				deg *= -1
+				deg *= -1;
 			}
 
-			waypoint = rotateCCW(waypoint, deg)
+			waypoint = rotateCCW(waypoint, deg);
 		}
 	}
 
@@ -102,18 +103,20 @@ function partTwo(instructions) {
 
 
 async function main() {
-	const start_time = process.hrtime() 
+	const start_time = process.hrtime() ;
 	const lines = await loadInput();
 
-	const instructions = lines.map(line => [line[0],Number(line.substring(1))])
+	const instructions = lines.map(
+		line => [line[0],Number(line.substring(1))]
+	);
 
-	const part_one_ans = partOne(instructions)
-	const part_two_ans = partTwo(instructions)
+	const part_one_ans = partOne(instructions);
+	const part_two_ans = partTwo(instructions);
 	
-	const diff = process.hrtime(start_time)
-	const total_time = (diff[0] + diff[1]/1e9).toFixed(3)
+	const diff = process.hrtime(start_time);
+	const total_time = (diff[0] + diff[1]/1e9).toFixed(3);
 	
-	console.log(`Day 12 (${total_time}s)`)
+	console.log(`Day 12 (${total_time}s)`);
 	console.log(`  Part 1: ${part_one_ans}`);
 	console.log(`  Part 2: ${part_two_ans}`);
 }

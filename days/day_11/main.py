@@ -2,7 +2,7 @@ import time
 import os
 
 
-def update_grid(grid, rows, cols, occupied_threshold, search_visible=False):
+def update_grid(grid, rows, cols, occupied_threshold, search_visible = False):
 	changed = False
 
 	updated_grid = []
@@ -55,7 +55,7 @@ def get_occupied(spot, rows, cols, grid, search_visible = False):
 
 		if not search_visible:
 			if in_grid(neighbor,rows,cols):
-				occupied += (grid[neighbor[0]][neighbor[1]]=='#')
+				occupied += (grid[neighbor[0]][neighbor[1]] == '#')
 		else:
 			searching = True
 			
@@ -115,7 +115,7 @@ def main():
 		part_one_ans = part_one(grid)
 		part_two_ans = part_two(grid)
 
-		print('Day 11 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 11 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 
