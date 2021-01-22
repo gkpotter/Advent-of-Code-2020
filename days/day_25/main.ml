@@ -21,7 +21,7 @@ let transform subject loop =
 let find_loop key subject =
 	let rec check loop =
 		if transform subject loop = key then loop
-		else check (loop+1)
+		else check (loop + 1)
 	in
 	check 1
 ;;

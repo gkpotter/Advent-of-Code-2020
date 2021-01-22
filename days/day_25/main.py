@@ -13,7 +13,7 @@ def transform(subject, loop):
 		subject *= subject
 		subject %= modulus
 
-		loop//=2
+		loop //= 2
 	return value
 
 
@@ -26,7 +26,7 @@ def find_loop(key, subject):
 
 def part_one(card_key, door_key, subject):
 	"""
-	Using Sympy's discrete log:
+	Using Sympy's discrete log is much faster:
 
 	from sympy.ntheory.residue_ntheory import discrete_log
 
@@ -34,8 +34,8 @@ def part_one(card_key, door_key, subject):
 	door_loop = discrete_log(20201227, door_key, subject)
 	"""
 
-	card_loop = find_loop(card_key, subject)
-	door_loop = find_loop(door_key, subject)
+	card_loop = find_loop(card_key, subject);
+	door_loop = find_loop(door_key, subject);
 
 	return transform(transform(subject, door_loop), card_loop)
 

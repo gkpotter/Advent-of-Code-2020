@@ -19,7 +19,7 @@ def create_cups(nums):
 	cups = { nums[i]: Cup(nums[i]) for i in range(n)}
 
 	for i in range(0,len(nums)):
-		cups[nums[i]].right = cups[nums[(i+1)%n]]
+		cups[nums[i]].right = cups[nums[(i+1) % n]]
 
 	return cups
 
@@ -91,7 +91,7 @@ def main():
 		part_one_ans = part_one(nums)
 		part_two_ans = part_two(nums)
 
-		print('Day 23  ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 23  ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

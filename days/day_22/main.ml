@@ -23,8 +23,8 @@ let part_one d1 d2 =
 		match (d1, d2) with
 		| (c1 :: tl1, c2 :: tl2) -> 
 			if c1 > c2 
-			then combat (tl1@[c1;c2]) tl2
-			else combat tl1 (tl2@[c2;c1])
+			then combat (tl1 @ [c1; c2]) tl2
+			else combat tl1 (tl2 @ [c2; c1])
 		| (_ :: _, []) -> score d1
 		| ([], _ :: _) -> score d2
 		| ([], []) -> failwith "nope"
@@ -47,12 +47,12 @@ let part_two d1 d2 =
 						rec_combat (List.take tl1 c1) (List.take tl2 c2) []
 					in
 					if sub_winner = 1
-					then rec_combat (tl1@[c1;c2]) tl2 (prev@[(d1,d2)])
-					else rec_combat tl1 (tl2@[c2;c1]) (prev@[(d1,d2)])
+					then rec_combat (tl1 @ [c1; c2]) tl2 (prev @ [(d1,d2)])
+					else rec_combat tl1 (tl2 @ [c2; c1]) (prev @ [(d1,d2)])
 				else
 					if c1 > c2 
-					then rec_combat (tl1@[c1;c2]) tl2 (prev@[(d1,d2)])
-					else rec_combat tl1 (tl2@[c2;c1]) (prev@[(d1,d2)])
+					then rec_combat (tl1 @ [c1; c2]) tl2 (prev @ [(d1,d2)])
+					else rec_combat tl1 (tl2 @ [c2; c1]) (prev @ [(d1,d2)])
 			| (_ :: _, []) -> (1, d1)
 			| ([], _ :: _) -> (2, d2)
 			| ([], []) -> failwith "nope"
@@ -68,10 +68,10 @@ let () =
 		|> List.findi ~f:(fun _ line -> String.(=) line "Player 2:")
 		|> Option.value_exn
 	in
-	let d1 = List.drop ( List.take input (i-1) ) 1
+	let d1 = List.drop ( List.take input (i - 1) ) 1
 		|> List.map ~f:int_of_string
 	in
-	let d2 = List.drop input (i+1) 
+	let d2 = List.drop input (i + 1) 
 		|> List.map ~f:int_of_string
 	in
 	let part_one_ans = part_one d1 d2 in

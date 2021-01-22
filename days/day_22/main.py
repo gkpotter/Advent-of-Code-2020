@@ -12,7 +12,7 @@ def score_deck(d):
 
 
 def part_one(d1, d2):
-	while len(d1)!=0 and len(d2)!=0:
+	while len(d1) != 0 and len(d2) != 0:
 		c1 = d1.pop(0)
 		c2 = d2.pop(0)
 
@@ -31,11 +31,11 @@ def part_one(d1, d2):
 
 
 def recursive_combat(d1, d2, previous_states):
-	while len(d1)!=0 and len(d2)!=0:
+	while len(d1) != 0 and len(d2) != 0:
 		if (tuple(d1),tuple(d2)) in previous_states:
 			return (1, d1)
 		else:
-			previous_states.append((tuple(d1),tuple(d2)))
+			previous_states.append((tuple(d1), tuple(d2)))
 			c1 = d1.pop(0)
 			c2 = d2.pop(0)
 
@@ -76,7 +76,7 @@ def main():
 		part_one_ans = part_one(d1.copy(),d2.copy())
 		part_two_ans = part_two(d1.copy(),d2.copy())
 
-		print('Day 22  ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 22  ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 
