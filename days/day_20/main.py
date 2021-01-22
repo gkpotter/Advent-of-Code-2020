@@ -95,7 +95,7 @@ def get_image(board):
 			for piece in board[i//d]:
 				line.extend(piece.grid[i%d][1:-1])
 
-			img.append(''.join(line))
+			img.append(line.copy())
 			line = []
 
 		i+=1
@@ -141,7 +141,7 @@ def part_one(pieces):
 
 
 def part_two(board):
-	img = [list(line) for line in get_image(board)]
+	img = get_image(board)
 
 	monsters = get_orientations(['                  # ',
 															 '#    ##    ##    ###',
