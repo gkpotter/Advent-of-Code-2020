@@ -107,7 +107,7 @@ def main():
 		part_one_ans = part_one(passports)
 		part_two_ans = part_two(passports)
 
-		print('Day  4 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day  4 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 		

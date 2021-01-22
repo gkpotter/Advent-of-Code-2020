@@ -7,7 +7,7 @@ def part_one(adapters):
 	threes = 0
 
 	for i in range(1,len(adapters)):
-		diff = adapters[i]-adapters[i-1]
+		diff = adapters[i] - adapters[i - 1]
 
 		if diff == 1:
 			ones+=1
@@ -22,10 +22,10 @@ def part_two(adapters):
 	streak = 0
 
 	# tribonacci numbers?
-	factor = [1,1,2,4,7,13]
+	factor = [1, 1, 2, 4, 7, 13]
 
 	for i in range(1,len(adapters)):
-		diff = adapters[i]-adapters[i-1]
+		diff = adapters[i] - adapters[i - 1]
 
 		if diff == 1:
 			streak += 1
@@ -43,12 +43,12 @@ def main():
 		adapters = [int(line) for line in data.readlines()]
 		adapters.append(0)
 		adapters.sort()
-		adapters.append(adapters[-1]+3)
+		adapters.append(adapters[-1] + 3)
 		
 		part_one_ans = part_one(adapters)
 		part_two_ans = part_two(adapters)
 
-		print('Day 10 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 10 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

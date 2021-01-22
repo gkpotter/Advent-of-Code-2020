@@ -8,9 +8,9 @@ let attempt instructions =
 		if steps > length  then -1
 		else if (i >= length) then acc
 		else match List.nth_exn instructions i with
-		| ("nop",_) -> run (steps+1)  acc    (i+1)
-		| ("jmp",n) -> run (steps+1)  acc    (i+n)
-		| ("acc",n) -> run (steps+1) (acc+n) (i+1)
+		| ("nop",_) -> run (steps + 1)  acc      (i + 1)
+		| ("jmp",n) -> run (steps + 1)  acc      (i + n)
+		| ("acc",n) -> run (steps + 1) (acc + n) (i + 1)
 		| (_,_) -> failwith "nope"
 	in
 	run 0 0 0
@@ -20,9 +20,9 @@ let part_one instructions =
 	let rec run seen acc i =
 		if List.exists seen ~f:((=) i) then acc
 		else match List.nth_exn instructions i with
-		| ("nop",_) -> run (seen@[i])  acc    (i+1)
-		| ("jmp",n) -> run (seen@[i])  acc    (i+n)
-		| ("acc",n) -> run (seen@[i]) (acc+n) (i+1)
+		| ("nop",_) -> run (seen @ [i])  acc      (i + 1)
+		| ("jmp",n) -> run (seen @ [i])  acc      (i + n)
+		| ("acc",n) -> run (seen @ [i]) (acc + n) (i + 1)
 		| (_,_) -> failwith "nope"
 	in
 	run [] 0 0
@@ -37,9 +37,9 @@ let part_two instructions =
 				| "nop" -> ("jmp", num)
 				| _ -> (instr, num)
 			in
-			let acc = attempt (front@[x]@tl) in
+			let acc = attempt (front @ [x] @ tl) in
 			if acc > 0 then acc
-			else fix (front@[(instr,num)]) tl
+			else fix (front @ [(instr,num)]) tl
 		| [] -> 0
 	in
 	fix [] instructions

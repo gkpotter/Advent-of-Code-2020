@@ -13,7 +13,7 @@ def search(bag, rules):
 			if other == "shiny gold bag":
 				return True
 		
-		return any(search(other,rules) for other in others)
+		return any(search(other, rules) for other in others)
 
 
 def count(bag, rules):
@@ -22,7 +22,7 @@ def count(bag, rules):
 	if others == {}:
 		return 0
 	else:
-		return sum(rules[bag][other]*(1+count(other,rules)) for other in others)
+		return sum(rules[bag][other]*(1 + count(other,rules)) for other in others)
 
 
 def part_one(rules):
@@ -58,7 +58,7 @@ def main():
 		part_one_ans = part_one(rules)
 		part_two_ans = part_two(rules)
 
-		print('Day  7 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day  7 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 		

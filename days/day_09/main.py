@@ -40,7 +40,7 @@ def main():
 		part_one_ans = part_one(nums)
 		part_two_ans = part_two(nums, part_one_ans)
 
-		print('Day  9 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day  9 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

@@ -9,7 +9,7 @@ let unique_chars str =
 		| hd :: tl -> (
 			if List.mem seen hd ~equal:(Char.equal)
 			then unique_chars2 tl seen n
-			else unique_chars2 tl (seen @ [hd]) (n+1)
+			else unique_chars2 tl (seen @ [hd]) (n + 1)
 		)
 	in
 	unique_chars2 (String.to_list str) [] 0
