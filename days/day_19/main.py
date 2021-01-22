@@ -9,7 +9,7 @@ def check(alphabet, grammar, word, start_symbol):
 
 def _check(alphabet, grammar, word, stack, i):
 	if stack != [] and len(stack) <= len(word):
-		top = stack.pop()
+		top = stack.pop(0)
 
 		if top in alphabet:
 			if i>=len(word):
@@ -21,7 +21,7 @@ def _check(alphabet, grammar, word, stack, i):
 				return False
 		else:
 			for match in grammar[top]:
-				if _check(alphabet, grammar, word, stack+list(reversed(match)), i):
+				if _check(alphabet, grammar, word, match+stack, i):
 					return True
 			
 			return False
