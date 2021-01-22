@@ -8,7 +8,7 @@ let part_one start bus_ids =
 			List.find bus_ids ~f:(fun (bus_id,_) -> (time mod bus_id = 0))
 		with
 		| Some bus_id -> (bus_id, time)
-		| None -> check (time+1)
+		| None -> check (time + 1)
 	in
 	let (earliest,_), time = check start in
 	earliest * (time - start)
@@ -41,7 +41,7 @@ let () =
 				if String.(=) bus_id "x" then acc
 				else (acc @ [((int_of_string bus_id),i)])
 			)
-		|> List.sort ~compare:(fun (a,_) (b,_) -> b-a)
+		|> List.sort ~compare:(fun (a,_) (b,_) -> b - a)
 	in
 	let part_one_ans = part_one start bus_ids in
 	let part_two_ans = part_two bus_ids in
