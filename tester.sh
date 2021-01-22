@@ -15,7 +15,7 @@ done
 # Test OCaml
 echo -e "\nOCaml" | tee -a ${tmp}
 echo "-------------------------" | tee -a  ${tmp}
-for i in "01" "02" "03" "04" "05" "06" "08" "09" "10" "13" "15" "22" "25"
+for i in "01" "02" "03" "04" "05" "06" "08" "09" "10" "13" "19" "15" "22" "25"
 do
 	cd days/day_${i}/
 	corebuild main.native -quiet -pkgs str
@@ -28,7 +28,7 @@ done
 # Test Node.js
 echo -e "\nNode.js" | tee -a ${tmp}
 echo "-------------------------" | tee -a  ${tmp}
-for i in "01" "04" "07" "11" "12" "14" "16" "17" "21" "23" "24" "25"
+for i in "01" "04" "07" "11" "12" "14" "16" "17" "18" "20" "21" "23" "24" "25"
 do
 	node days/day_${i}/main.js | tee -a ${tmp}
 	echo "-------------------------" | tee -a  ${tmp}
