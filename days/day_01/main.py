@@ -4,16 +4,16 @@ import os
 def part_one(nums):
 	for x in nums:
 		for y in nums:
-			if x+y == 2020:
-				return x*y
+			if x + y == 2020:
+				return x * y
 
 				
 def part_two(nums):
 	for x in nums:
 		for y in nums:
 			for z in nums:
-				if x+y+z == 2020:
-					return x*y*z
+				if x + y + z == 2020:
+					return x * y * z
 
 					
 def main():

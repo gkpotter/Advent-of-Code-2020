@@ -14,15 +14,15 @@ def is_valid(passport):
 		return False
 
 	byr = passport['byr']
-	if not (is_year(byr) and int(byr) in range(1920,2003)):
+	if not (is_year(byr) and int(byr) in range(1920, 2003)):
 		return False
 
 	iyr = passport['iyr']
-	if not (is_year(iyr) and int(iyr) in range(2010,2021)):
+	if not (is_year(iyr) and int(iyr) in range(2010, 2021)):
 		return False
 
 	eyr = passport['eyr']
-	if not (is_year(eyr) and int(eyr) in range(2020,2031)):
+	if not (is_year(eyr) and int(eyr) in range(2020, 2031)):
 		return False
 
 	hgt = passport['hgt']
@@ -31,15 +31,15 @@ def is_valid(passport):
 
 	hcl = passport['hcl']
 	if not(hcl[0]=='#' and len(hcl)==7 and 
-		all(is_digit(x) or x in ['a','b','c','d','e','f'] for x in hcl[1:])):
+		all(is_digit(x) or x in ['a', 'b', 'c', 'd', 'e', 'f'] for x in hcl[1:])):
 		return False
 
 	ecl = passport['ecl']
-	if ecl not in ['amb','blu','brn','gry','grn','hzl','oth']:
+	if ecl not in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']:
 		return False
 
 	pid = passport['pid']
-	if not(len(pid)== 9 and all(is_digit(x) for x in pid)):
+	if not(len(pid) == 9 and all(is_digit(x) for x in pid)):
 		return False
 
 	return True
@@ -51,16 +51,16 @@ def is_year(y):
 
 def is_digit(x):
 	try:
-		return int(x) in range(0,10)
+		return int(x) in range(0, 10)
 	except:
 		return False
 
 
 def valid_height(hgt):
 	try:
-		if hgt[2:] == 'in' and int(hgt[:2]) in range(59,77):
+		if hgt[2:] == 'in' and int(hgt[:2]) in range(59, 77):
 			return True
-		if hgt[3:] == 'cm' and int(hgt[:3]) in range(150,194):
+		if hgt[3:] == 'cm' and int(hgt[:3]) in range(150, 194):
 			return True
 		return False
 	except:

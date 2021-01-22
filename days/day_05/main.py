@@ -7,7 +7,7 @@ def part_one(seats):
 
 
 def part_two(seats):
-	available = list(range(1,127*44+7+1))
+	available = list(range(1, 127*44 + 7 + 1))
 	for seat in seats:
 		available.remove(get_id(seat))
 	for seat in available:

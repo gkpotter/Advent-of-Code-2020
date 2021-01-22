@@ -13,11 +13,11 @@ let check_rows rows (r, d) =
 			| Some c -> check_rows (trees + (Bool.to_int (Char.(=) c '#'))) new_pos
 			| None -> failwith "nope"
 	in
-	check_rows 0 (0, 0)
+	check_rows 0 (0,0)
 ;;
 
 let part_one rows =
-	check_rows rows (3, 1)
+	check_rows rows (3,1)
 ;;
 
 

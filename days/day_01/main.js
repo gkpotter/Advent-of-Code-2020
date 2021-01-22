@@ -10,25 +10,25 @@ async function loadInput() {
   for await (const line of rl) {
     lines.push(line);
   }
-  return lines
+  return lines;
 }
 
 function partOne(nums) {
-  for (let x of nums) {
-    for (let y of nums) {
-      if (x+y == 2020) {
-        return x*y
+  for (const x of nums) {
+    for (const y of nums) {
+      if (x + y == 2020) {
+        return x * y;
       }
     }
   }
 }
 
 function partTwo(nums) {
-  for (let x of nums) {
-    for (let y of nums) {
-      for (let z of nums) {
-        if (x+y+z == 2020) {
-          return x*y*z
+  for (const x of nums) {
+    for (const y of nums) {
+      for (const z of nums) {
+        if (x + y + z == 2020) {
+          return x * y * z;
         }
       }
     }
@@ -36,18 +36,18 @@ function partTwo(nums) {
 }
 
 async function main() {
-	const start_time = process.hrtime() 
+	const start_time = process.hrtime() ;
   
   const lines = await loadInput();
-  const nums = lines.map(line => Number(line))
+  const nums = lines.map(line => Number(line));
 
-  const part_one_ans = partOne(nums)
-  const part_two_ans = partTwo(nums)
+  const part_one_ans = partOne(nums);
+  const part_two_ans = partTwo(nums);
   
-  const diff = process.hrtime(start_time)
-  const total_time = (diff[0] + diff[1]/1e9).toFixed(3)
+  const diff = process.hrtime(start_time);
+  const total_time = (diff[0] + diff[1]/1e9).toFixed(3);
   
-  console.log(`Day  1 (${total_time}s)`)
+  console.log(`Day  1 (${total_time}s)`);
   console.log(`  Part 1: ${part_one_ans}`);
   console.log(`  Part 2: ${part_two_ans}`);
 }

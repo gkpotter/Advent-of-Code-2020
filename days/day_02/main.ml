@@ -23,9 +23,9 @@ let part_two entries =
 		let (a, b) = entry.range in
 		let pw_list = String.to_list entry.password in
 		if Bool.(<>)
-			(Char.(=) (List.nth_exn pw_list (a-1)) entry.letter)
-			(Char.(=) (List.nth_exn pw_list (b-1)) entry.letter)
-		then total+1
+			(Char.(=) (List.nth_exn pw_list (a - 1)) entry.letter)
+			(Char.(=) (List.nth_exn pw_list (b - 1)) entry.letter)
+		then total + 1
 		else total
 	)
 ;;

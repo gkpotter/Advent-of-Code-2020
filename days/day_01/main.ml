@@ -9,7 +9,7 @@ let part_one nums =
 		)
 	in
 	match num with
-	| Some y -> y*(2020-y)
+	| Some y -> y*(2020 - y)
 	| None -> 0
 ;;
 
@@ -21,7 +21,7 @@ let part_two nums =
 			)
 			in
 			match y with
-		 	| Some y -> Some (x*y*(2020-x-y))
+		 	| Some y -> Some (x * y * (2020 - x - y))
 		 	| None -> None
 	 	)
 	in

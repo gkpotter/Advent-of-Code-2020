@@ -6,7 +6,7 @@ def part_one(rows):
 	
 
 def part_two(rows):
-	slopes = [[1,1],[3,1],[5,1],[7,1],[1,2]]
+	slopes = [[1,1], [3,1], [5,1], [7,1], [1,2]]
 	prod = 1
 	for slope in slopes:
 		prod *= check_trees(rows,*slope)
@@ -19,7 +19,7 @@ def check_trees(rows, right, down):
 	y = 0
 	width = len(rows[0])
 	
-	while(y<len(rows)):
+	while(y < len(rows)):
 		total_trees += (rows[y][x] == '#')
 		x = (x + right) % width
 		y += down

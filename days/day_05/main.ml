@@ -8,7 +8,7 @@ let dec_to_bin str =
 	|> String.to_list
 	|> List.mapi ~f:(fun i c ->
 		if Char.equal c '1'
-		then Int.pow 2 (l-i-1)
+		then Int.pow 2 (l - i - 1)
 		else 0
 	)
 	|> List.fold ~init:(0) ~f:(+)
@@ -26,7 +26,7 @@ let get_id seat =
 	in
 	let row_bin, col_bin = List.split_n seat_bin 7
 	in
-	(dec_to_bin (String.of_char_list row_bin))*8 
+	(dec_to_bin (String.of_char_list row_bin)) * 8 
 		+ (dec_to_bin (String.of_char_list col_bin))
 ;;
 
@@ -44,7 +44,7 @@ let part_two seats =
 	let ids = List.map seats ~f:(get_id) in
 	let my_seat = ids
 		|> List.find ~f:(fun id ->
-			not (List.mem ids (id+1) ~equal:(=)) && (List.mem ids (id+2) ~equal:(=))
+			not (List.mem ids (id + 1) ~equal:(=)) && (List.mem ids (id + 2) ~equal:(=))
 		)
 	in
 	match my_seat with

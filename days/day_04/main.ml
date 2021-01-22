@@ -23,7 +23,7 @@ let all_fields_present passport =
   		else false
   	| [] -> true
   in
-  check passport ["byr";"iyr";"eyr";"hgt";"hcl";"ecl";"pid"]
+  check passport ["byr"; "iyr"; "eyr"; "hgt"; "hcl"; "ecl"; "pid"]
 ;;
 
 let is_valid passport = 

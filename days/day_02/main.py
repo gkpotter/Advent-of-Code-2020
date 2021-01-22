@@ -7,8 +7,8 @@ def part_one(pw_data):
 
 	for entry in pw_data:
 		count = entry['password'].count(entry['letter'])
-		[m,M] = entry['range']
-		total_valid += count in range(m,M+1)
+		[m, M] = entry['range']
+		total_valid += count in range(m, M+1)
 
 	return total_valid
 		
@@ -20,7 +20,7 @@ def part_two(pw_data):
 		[a,b] = entry['range']
 		l = entry['letter']
 		pw = entry['password']
-		total_valid += (pw[a-1]==l)^(pw[b-1]==l)
+		total_valid += (pw[a-1] == l)^(pw[b-1] == l)
 
 	return total_valid
 		
