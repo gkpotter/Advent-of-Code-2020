@@ -38,11 +38,11 @@ def eval_operation(match):
 	oper = match.group(2)
 	
 	if oper == '+':
-		return str(x+y)
+		return str(x + y)
 	elif oper == '*':
-		return str(x*y)
+		return str(x * y)
 	else:
-		return '0'
+		raise Exception('nope')
 
 
 def part_one(expressions):
@@ -68,7 +68,7 @@ def main():
 		part_one_ans = part_one(expressions)
 		part_two_ans = part_two(expressions)
 
-		print('Day 18 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 18 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

@@ -62,7 +62,8 @@ def main():
 		while lines[i] != '':
 			items = lines[i].split(':')
 
-			grammar[items[0]] = [match.strip().replace('"','').split(' ') for match in items[1].split('|')]
+			grammar[items[0]] = [match.strip().replace('"','').split(' ') 
+				for match in items[1].split('|')]
 
 			i+=1
 
@@ -73,7 +74,7 @@ def main():
 		part_one_ans = part_one(alphabet, grammar, words, start_symbol)
 		part_two_ans = part_two(alphabet, grammar, words, start_symbol)
 
-		print('Day 19 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 19 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

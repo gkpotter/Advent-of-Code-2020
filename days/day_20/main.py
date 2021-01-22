@@ -13,13 +13,13 @@ class Piece:
 		return self.grid[0]
 
 	def bot(self):
-		return self.grid[self.d-1]
+		return self.grid[self.d - 1]
 
 	def left(self):
 		return [row[0] for row in self.grid]
 
 	def right(self):
-		return [row[self.d-1] for row in self.grid]
+		return [row[self.d - 1] for row in self.grid]
 
 	# flip along vertical axis
 	def flip(self):
@@ -52,7 +52,7 @@ def solve(board, pieces, n, row, col):
 			for i in range(4):
 				board[row][col].rotate()
 				if check(board, row, col):
-					if solve(board, others, n, row, col+1):
+					if solve(board, others, n, row, col + 1):
 						return True
 			
 			board[row][col].flip()
@@ -60,7 +60,7 @@ def solve(board, pieces, n, row, col):
 			for i in range(4):
 				board[row][col].rotate()
 				if check(board, row, col):
-					if solve(board, others, n, row, col+1):
+					if solve(board, others, n, row, col + 1):
 						return True
 
 			# backtrack

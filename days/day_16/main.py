@@ -57,9 +57,9 @@ def part_two(fields, tickets, my_ticket):
 			if valid:
 				possible_fields[entry_num].append(field)
 
-	while not all(len(field_list)==1 for field_list in possible_fields):
+	while not all(len(field_list) == 1 for field_list in possible_fields):
 		for field_list in possible_fields:
-			if len(field_list)==1:
+			if len(field_list) == 1:
 				for other in possible_fields:
 					if len(other) != 1 and field_list[0] in other:
 						other.remove(field_list[0])
@@ -95,20 +95,20 @@ def main():
 				for x in range(r[0],r[1]+1):
 					fields[field].append(x)
 
-			i+=1
+			i += 1
 
-		i+=2
+		i += 2
 		my_ticket = [int(x) for x in lines[i].strip().split(',')]
 
-		i+=3
+		i += 3
 		while i < len(lines):
 			tickets.append([int(x) for x in lines[i].strip().split(',')])
-			i+=1
+			i += 1
 
 		part_one_ans = part_one(fields, tickets)
 		part_two_ans = part_two(fields, tickets, my_ticket)
 
-		print('Day 16 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 16 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

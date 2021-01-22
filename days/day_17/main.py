@@ -10,17 +10,17 @@ for i in offsets:
 		for k in offsets:
 			for m in offsets:
 				if i == 0:
-					directions_3d.append([i,j,k,m])
-				directions_4d.append([i,j,k,m])
+					directions_3d.append([i, j, k, m])
+				directions_4d.append([i, j, k, m])
 
-directions_3d.remove([0,0,0,0])
-directions_4d.remove([0,0,0,0])
+directions_3d.remove([0, 0, 0, 0])
+directions_4d.remove([0, 0, 0, 0])
 
 
 def update_grid(grid, four_dim):
 	d, h, l, w = grid_size(grid)
-	expanded_grid = empty_grid(d+2,h+2,l+2,w+2)
-	new_grid = empty_grid(d+2,h+2,l+2,w+2)
+	expanded_grid = empty_grid(d+2, h+2, l+2, w+2)
+	new_grid = empty_grid(d+2, h+2, l+2, w+2)
 
 	# expand 'infinite' grid
 	for t in range(d):
@@ -94,7 +94,7 @@ def print_grid(grid):
 	d, h, l, w = grid_size(grid)
 	for t in range(d):
 		for z in range(h):
-			print('z = {}, t = {}'.format(z-h//2, t-d//2))
+			print('z = {}, t = {}'.format(z - h//2, t - d//2))
 			for x in range(l):
 				print(''.join(['#' if point == 1 else '.' for point in grid[t][z][x]]))
 
@@ -141,7 +141,7 @@ def main():
 		part_one_ans = part_one(grid)
 		part_two_ans = part_two(grid)
 
-		print('Day 17 ({:,.3f}s)'.format(time.time()-start_time))
+		print('Day 17 ({:,.3f}s)'.format(time.time() - start_time))
 		print('  Part 1: {}'.format(part_one_ans))
 		print('  Part 2: {}'.format(part_two_ans))
 

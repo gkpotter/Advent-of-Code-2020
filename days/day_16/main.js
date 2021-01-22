@@ -10,7 +10,7 @@ async function loadInput() {
 	for await (const line of rl) {
 		lines.push(line);
 	}
-	return lines
+	return lines;
 }
 
 function partOne(tickets,fields) {
@@ -24,39 +24,39 @@ function partOne(tickets,fields) {
 	}
 
 	const total = tickets.reduce((total, ticket) => {
-		return total + ticket.reduce(ticket_reducer, 0)
+		return total + ticket.reduce(ticket_reducer, 0);
 	}, 0);
 
 	return total;
 }
 
 function partTwo(tickets, my_ticket, fields) {
-	let total = 0
+	let total = 0;
 
 	const valid_tickets = tickets.filter(ticket => {
 		return !ticket.some(entry => {
 			for (const field of Object.keys(fields)) {
 				if (fields[field].includes(entry)) {
-					return false
+					return false;
 				}
 			}
-			return true
-		})
+			return true;
+		});
 	});
 
-	const possible_fields = []
+	const possible_fields = [];
 
 	for (let entry_num = 0; entry_num < my_ticket.length; entry_num++) {
-		let entries = valid_tickets.map(ticket => ticket[entry_num])
+		let entries = valid_tickets.map(ticket => ticket[entry_num]);
 
 		const possible_fields_for_entry = Object.keys(fields).filter(field => {
 			for (const entry of entries) {
 				if (!fields[field].includes(entry)){
-					return false
+					return false;
 				}
 			}
-			return true
-		})
+			return true;
+		});
 
 		possible_fields.push(possible_fields_for_entry)
 		
@@ -66,9 +66,10 @@ function partTwo(tickets, my_ticket, fields) {
 		for (const field_list of possible_fields) {
 			if (field_list.length == 1) {
 				for (let j = 0; j < possible_fields.length; j++) {
-					const index = possible_fields[j].indexOf(field_list[0])
+					const index = possible_fields[j].indexOf(field_list[0]);
+					
 					if (possible_fields[j].length != 1 && index>=0) {
-						possible_fields[j].splice(index,1)
+						possible_fields[j].splice(index,1);
 					}
 				}
 			}
@@ -79,56 +80,56 @@ function partTwo(tickets, my_ticket, fields) {
 
 	const prod = field_order.reduce((total, field, i) => {
 		if (field.includes('departure')) {
-			return total * my_ticket[i]
+			return total * my_ticket[i];
 		}
-		return total
+		return total;
 	}, 1)
 
 	
-	return prod
+	return prod;
 }
 
 async function main() {
-	const start_time = process.hrtime() 
+	const start_time = process.hrtime();
 	const lines = await loadInput();
 
-	let i = 0
-	const fields = {}
-	const tickets = []
+	let i = 0;
+	const fields = {};
+	const tickets = [];
 
 	while (lines[i] != '') {
 		items = lines[i].split(':');
-		field = items[0]
+		field = items[0];
 		ranges = items[1].split(' or ')
-										 .map(item => item.split('-').map(Number))
+										 .map(item => item.split('-').map(Number));
 
-		fields[field] = []
+		fields[field] = [];
 		for (const r of ranges) {
 			for (let x = r[0]; x <= r[1]; x++) {
-				fields[field].push(x)
+				fields[field].push(x);
 			}
 		}
 
-		i+=1
+		i += 1;
 	}
 
-	i+=2
-	const my_ticket = lines[i].split(',').map(Number)
+	i += 2;
+	const my_ticket = lines[i].split(',').map(Number);
 
 
-	i+=3
+	i += 3;
 	while (i < lines.length) {
-		tickets.push(lines[i].split(',').map(Number))
-		i+=1
+		tickets.push(lines[i].split(',').map(Number));
+		i += 1;
 	}
 
-	const part_one_ans = partOne(tickets, fields)
-	const part_two_ans = partTwo(tickets, my_ticket, fields)
+	const part_one_ans = partOne(tickets, fields);
+	const part_two_ans = partTwo(tickets, my_ticket, fields);
 	
-	const diff = process.hrtime(start_time)
-	const total_time = (diff[0] + diff[1]/1e9).toFixed(3)
+	const diff = process.hrtime(start_time);
+	const total_time = (diff[0] + diff[1]/1e9).toFixed(3);
 	
-	console.log(`Day 16 (${total_time}s)`)
+	console.log(`Day 16 (${total_time}s)`);
 	console.log(`  Part 1: ${part_one_ans}`);
 	console.log(`  Part 2: ${part_two_ans}`);
 }
